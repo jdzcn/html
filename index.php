@@ -7,7 +7,7 @@
 
 	// $sql="select id,name,images,price from product ";
 
-	$find= array("where cid=".$cid,"where name like '%".$key."%'","order by id desc ");
+	$find= array("where cid=".$cid,"where name like '%".$key."%'","");
 			
 
 	$sql = "SELECT COUNT(*) as total FROM product ";
@@ -19,16 +19,20 @@
 	$sql=$sql.$find[$fstyle];
 
 
-if ($fstyle>1) {
-$perPage = 20;
+
+$perPage = 12;
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 $startAt = $perPage * ($page - 1);
 
 $r = mysqli_fetch_assoc(mysqli_query($conn,$sql));
 $total=$r['total'];
 $totalPages = ceil($total / $perPage);
+	$web="http://jdztao.xyz?";
+	$url=array("cid=".$cid,"key=".$key,"");
 
-$link = 'index.php?page=%d';
+	$link = "index.php?".$url[$fstyle]."&page=%d";
+	// echo $actual_link;
+
 $pagerContainer = '<div class="row" style="text-align:right">';   
 $pagerContainer .= $total.'件商品'; 
 if( $totalPages != 0 ) 
@@ -51,12 +55,14 @@ if( $totalPages != 0 )
     $pagerContainer .= sprintf( '<a href="' . $link . '" style="color: #c00"> 下一页 &#187; </a>', $page + 1 ); 
   }           
 }                   
+
 $pagerContainer .= '</div>';
 
-}
+
 
 	$sql = "SELECT id,name,images,price FROM product ";
-	$sql=$sql.$find[$fstyle].($fstyle>1?" limit $startAt,$perPage":"");
+	$sql=$sql.$find[$fstyle]." order by id desc  limit $startAt,$perPage ";
+	// $sql=$sql.$find[$fstyle].($fstyle>1?" limit $startAt,$perPage":"");
 
   	$result = mysqli_query($conn, $sql);
 	echo '<div class="main">';
@@ -77,7 +83,8 @@ $pagerContainer .= '</div>';
 <?php
 	}
 	echo "</div>";
-	if ($fstyle>1) echo $pagerContainer;
+
+	echo $pagerContainer;
 	
 	include("footer.php");
 ?>
