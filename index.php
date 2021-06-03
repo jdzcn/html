@@ -19,8 +19,8 @@
 	$sql=$sql.$find[$fstyle];
 
 
-
-$perPage = 12;
+if ($fstyle>1) {
+$perPage = 20;
 $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 $startAt = $perPage * ($page - 1);
 
@@ -53,10 +53,10 @@ if( $totalPages != 0 )
 }                   
 $pagerContainer .= '</div>';
 
-
+}
 
 	$sql = "SELECT id,name,images,price FROM product ";
-	$sql=$sql.$find[$fstyle]." limit $startAt,$perPage";
+	$sql=$sql.$find[$fstyle].($fstyle>1?" limit $startAt,$perPage":"");
 
   	$result = mysqli_query($conn, $sql);
 	echo '<div class="main">';
@@ -77,7 +77,7 @@ $pagerContainer .= '</div>';
 <?php
 	}
 	echo "</div>";
-	echo $pagerContainer;
+	if ($fstyle>1) echo $pagerContainer;
 	
 	include("footer.php");
 ?>
