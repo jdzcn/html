@@ -40,9 +40,9 @@ map to guest = Bad User
 
 # any share name you like
 
-[Share]
+[movie]
     # shared directory
-    path = /home/share
+    path = /home/sb/movie
     # writable
     writable = yes
     # guest OK
@@ -60,7 +60,12 @@ map to guest = Bad User
 ```shell
 systemctl restart smbd 
 ```
+### linux访问
+````
+sudo apt install cifs-utils
+sudo mount -t cifs //192.168.1.21/movie movie
 
+```
 ### 参考
 
 - [server-world](https://www.server-world.info/en/note?os=Debian_10&p=samba&f=1)
