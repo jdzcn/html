@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>御雅堂</title>
+<style type="text/css">
+
+	body {
+		
+		margin: 0 auto;
+
+		background-color: white;
+	}
+	header,footer {
+		background-color: darkseagreen;
+		padding: 20px 20px;
+	}
+	header,h1,h2 {
+		margin: 0;
+			
+	}
+
+footer {text-align: center;}
+	h1,h2 {
+		color: white;
+
+	}
+	img {
+		width: 190px;
+		height: 190px;
+		margin: 2px;
+	}
+
+main {
+	min-height: 800px;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+ul {
+	display: inline-block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li {
+	padding-left: 5px;
+	display: inline-block;
+}
+div.img {
+	border: 1px solid lightgray;
+	width: 190px;
+	height: 240px;
+}
+div.desc {
+
+}
+input {
+	float: right;
+	width: 200px;
+	height: 30px;
+	position: relative;
+	top: 10px;
+}
+a#title {
+	color: white;
+	text-decoration: none;
+}
+
+
+</style>
+<script>
+
+
+
+window.onload=function() {upcategory();updatedata('');}
+
+//const myweb="http://172.96.193.223/";
+const myweb="";
+
+function showmodal(){modal.style.display = 'block';}
+function updatedata(str)
+{
+	
+fetch(myweb+"product_sqlite.php"+str).then(function(response) {
+  response.text().then(function(text) {
+    var jsonstr=JSON.parse(text);
+
+			var mydiv = document.querySelector("main");
+			mydiv.textContent="";
+			for(var i = 0;i<jsonstr.length;i++){
+				
+				let d=document.createElement("div");
+				
+				d.setAttribute('class', "img");
+				let a=document.createElement("a");
+				// a.href="view.php?pid="+jsonstr[i].pid;
+				a.onclick="showmodal()";
+				a.href=""
+				a.target="_blank";
+  				var img = document.createElement("img");
+  				img.src=myweb+"thumbnail/"+jsonstr[i].image;
+  				img.alt=jsonstr[i].image;
+  				a.appendChild(img);
+  				
+  				let desc=document.createElement("a");
+  				//desc.setAttribute('class', "desc");
+  				desc.href="images/"+jsonstr[i].image;
+  				desc.textContent=jsonstr[i].name;
+  				d.appendChild(a);
+  				d.appendChild(desc);
+
+  				mydiv.appendChild(d);
+  				//console.log(jsonstr[i].name);
+ 
+			}
+  });
+});
+
+}
+
+
+function upcategory()
+{
+fetch(myweb+"category.php").then(function(response) {
+  response.text().then(function(text) {
+    var jsonstr=JSON.parse(text);
+
+			// var aside= document.querySelector("aside");
+			// let ul=document.createElement("ul");
+			var list = document.getElementById('keylist');
+			for(var i = 0;i<jsonstr.length;i++){
+				
+
+  			// 	var li = document.createElement("li");
+					// let a=document.createElement("a");
+					// a.href="#";
+					
+					
+					
+					// a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
+  			// 	a.textContent=jsonstr[i].name;
+  			// 	li.appendChild(a);
+  			// 	ul.appendChild(li);
+  			   var option = document.createElement('option');
+				   option.value = jsonstr[i].name;
+				   list.appendChild(option);
+  				
+ 
+			}
+			// aside.appendChild(ul);
+  });
+});
+
+}
+
+</script>
+</head>
+<body>
+<header>
+	<h2>≡&nbsp;<a href="" id="title">
+      <script type="text/javascript">
+        document.write(document.title)
+      </script></a>
+<input type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" list="keylist">
+<datalist id="keylist"></datalist>
+</h2>
+
+</header>
+<aside></aside>
+<main>
+
+</main>
+
+<footer><a href="mailto:jdzcn@qq.com">jdzcn@qq.com</a>&nbsp;<a href="admin/">后台管理</a></footer>
+</body>
+</html>
