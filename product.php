@@ -3,7 +3,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 //主要为跨域CORS配置的两大基本信息,Origin和headers
 
-include "sqlite.php";
+include "conn.php";
    // if(!$db){
    //    echo $db->lastErrorMsg();
    // } else {

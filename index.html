@@ -83,7 +83,7 @@ function showmodal(){modal.style.display = 'block';}
 function updatedata(str)
 {
 	
-fetch(myweb+"product_sqlite.php"+str).then(function(response) {
+fetch(myweb+"product.php"+str).then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 
@@ -123,7 +123,7 @@ fetch(myweb+"product_sqlite.php"+str).then(function(response) {
 
 function upcategory()
 {
-fetch(myweb+"category.php").then(function(response) {
+fetch(myweb+"style.php").then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 
