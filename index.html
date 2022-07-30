@@ -96,8 +96,8 @@ fetch(myweb+"product.php"+str).then(function(response) {
 				d.setAttribute('class', "img");
 				let a=document.createElement("a");
 				// a.href="view.php?pid="+jsonstr[i].pid;
-				a.onclick="showmodal()";
-				a.href=""
+				a.setAttribute('onclick', "alert('"+jsonstr[i].pid+"')");
+				// a.href="#"
 				a.target="_blank";
   				var img = document.createElement("img");
   				img.src=myweb+"thumbnail/"+jsonstr[i].image;
