@@ -46,11 +46,11 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 			$spec= $_POST['spec'];
 			$price= $_POST['price'];
 
-			$filename=$_FILES['file']['name'];
+			$filename=$_FILES['images']['name'];
 	        $newFilePath = "../images/".$filename;
 	        $thumbnail="../thumbnail/".$filename;
 
-        	if(move_uploaded_file($_FILES['file']['tmp_name'], $newFilePath)) {
+        	if(move_uploaded_file($_FILES['images']['tmp_name'], $newFilePath)) {
           		exec("convert ".$newFilePath." -resize 1000x1000 ".$newFilePath);
           		exec("convert ".$newFilePath." -resize 300x300 ".$thumbnail);
 
@@ -67,8 +67,8 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
         	}
 
         	echo $sql;
-           //  if ($db->exec($sql)) echo "update successful.";
-          	// else echo "Error: ".$sql;
+            if ($db->exec($sql)) echo "update successful.";
+          	else echo "Error: ".$sql;
            
 			
 

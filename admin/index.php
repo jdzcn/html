@@ -28,7 +28,7 @@
       <output id="result" ></output>
 
       <label for="images">商品图片</label>     
-      <input id="images" name="images[]" type="file" accept="image/*" multiple />
+      <input id="images" name="images" type="file" accept="image/*" />
       <input type="text" id="imgstr" name="imgstr" placeholder=商品图片>
 
 
