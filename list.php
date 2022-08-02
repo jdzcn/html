@@ -12,17 +12,18 @@ include "conn.php";
    // }
 	
 	
-	
+	$table=$_GET['table'];
 	switch ($_SERVER['REQUEST_METHOD']) {
 		
 		case 'GET':
 
 			
-			$sql = "SELECT * from style";
+			$sql = "SELECT * from ".$table;
+			// echo $sql;
 		  	$ret = $db->query($sql);
-		  	$category=array();
-			while($row = $ret->fetchArray(SQLITE3_ASSOC)) $category[]=$row;
-			echo json_encode($category);
+		  	$record=array();
+			while($row = $ret->fetchArray(SQLITE3_ASSOC)) $record[]=$row;
+			echo json_encode($record);
 			break;
 
 		case 'POST':

@@ -29,7 +29,7 @@ include "conn.php";
 				$sql.="where name like '%".$key."%'";
 			}
 			
-			$sql.=" order by pid desc limit 24";
+			$sql.=" order by pid desc limit 27";
 
 			$ret = $db->query($sql);
 
