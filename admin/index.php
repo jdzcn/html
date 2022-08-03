@@ -82,7 +82,7 @@
 
   </form>	
 	<script type="text/javascript">
-<!-- 
+
 function geprod(str)
 {
   if (str==0) return;
@@ -102,44 +102,36 @@ function geprod(str)
 
         // document.getElementById("id").value=xmlhttp.responseText;
         // document.getElementById("id").value=prod.id;
-        document.getElementById("name").value=prod.name;
+        document.getElementById("name").value=prod[0].name;
         document.getElementById("result").innerHTML="";
 
         document.getElementById("images").value=null;
-        document.getElementById("imgstr").value=prod.images;
+        document.getElementById("imgstr").value=prod[0].image;
         var output = document.getElementById("result");
-        var img=prod.images.split('|');
+        // var img=prod[0].images.split('|');
         var div = document.createElement("div");
                 // div.style="display:inline";
-                div.innerHTML = "<img class='thumbnail' src='../thumbnail/" + img[0]+ "' />";
+                div.innerHTML = "<img class='thumbnail' src='../thumbnail/" + prod[0].image+ "' />";
                 output.insertBefore(div, null);
         // output.innerHTML = "<img class='thumbnail' src='../thumbnail/" + img[0]+ "' width=100px/>";
-        document.getElementById("category").value=prod.cid;
+        document.getElementById("craft").value=prod[0].cid;
+        document.getElementById("graph").value=prod[0].gid;
+        document.getElementById("style").value=prod[0].sid;
 
-        var values = prod.tags;
-        var splitValues = values.split(',');
-        var multi = document.getElementById('tags');
 
-        multi.value = null; // Reset pre-selected options (just in case)
-        var multiLen = multi.options.length;
-        for (var i = 0; i < multiLen; i++) {
-          if (splitValues.indexOf(multi.options[i].value) >= 0) {
-            multi.options[i].selected = true;
-          }
-        }
-        // document.getElementById("prods").value=implode(',',prod.prods);
-        document.getElementById("spec").value=prod.spec;
-        document.getElementById("price").value=prod.price;
+        // document.getElementById("prod[0]s").value=implode(',',prod[0].prod[0]s);
+        document.getElementById("spec").value=prod[0].spec;
+        document.getElementById("price").value=prod[0].price;
 
 
       }
     }
-  xmlhttp.open("GET","getprod.php?id="+str,true);
+  xmlhttp.open("GET","product.php?pid="+str,true);
   xmlhttp.send();
 }
 
 
--->
+
 		function handleFileSelect() {
     //Check File API support
     if (window.File && window.FileList && window.FileReader) {

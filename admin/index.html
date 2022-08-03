@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/lightform.css">
+  <link rel="stylesheet" type="text/css" href="../css/lightform.css">
 <title>御雅堂</title>
 
 <style type="text/css">
@@ -145,7 +145,7 @@ fetch(myweb+"product.php"+str).then(function(response) {
 				a.href="#"
 				// a.target="_blank";
   				var img = document.createElement("img");
-  				img.src=myweb+"thumbnail/"+jsonstr[i].image;
+  				img.src=myweb+"../thumbnail/"+jsonstr[i].image;
   				img.alt=jsonstr[i].image;
   				a.appendChild(img);
   				
@@ -395,7 +395,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 		// images.file[0].filename=jsonstr[0].image;
 		result.innerHTML="";
   				var img = document.createElement("img");
-  				img.src=myweb+"thumbnail/"+jsonstr[0].image;
+  				img.src=myweb+"../thumbnail/"+jsonstr[0].image;
   				img.style.width="100px";
   				img.style.height="100px";
   				
@@ -475,9 +475,9 @@ document.getElementById('images').addEventListener('change', handleFileSelect, f
   }
 
 
-  /* Sending the formData object as payload using Fetch */
+    /* Sending the formData object as payload using Fetch */
  
-const form = document.getElementById('form');
+const form = document.getElementById("form");
  
 form.addEventListener('submit', function(e) {
     // Prevent default behavior:
@@ -485,13 +485,19 @@ form.addEventListener('submit', function(e) {
     // Create payload as new FormData object:
     const payload = new FormData(form);
     // Post the payload using Fetch:
-    fetch('admin/product.php', {
+    fetch('product.php', {
     method: 'POST',
     body: payload,
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+.then(response => response.text())
+.then(result => {
+  console.log('Success:', result);
 })
+.catch(error => {
+  console.error('Error:', error);
+});
+modal.style.display = "none";
+	});
 </script>
 <main>
 

@@ -25,3 +25,8 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+
+img.thumbnail {
+  width: 100px;
+  height: 100px;
+}

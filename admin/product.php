@@ -6,8 +6,8 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 	include('conn.php');
 	
-	$id = isset($_GET['pid'])? htmlspecialchars($_GET['pid']) : '';
-	$cid = isset($_GET['cid'])? htmlspecialchars($_GET['cid']) : '';
+	$pid = isset($_GET['pid'])? htmlspecialchars($_GET['pid']) : '';
+	$sid = isset($_GET['sid'])? htmlspecialchars($_GET['sid']) : '';
 	$key = isset($_GET['key'])? htmlspecialchars($_GET['key']) : '';
 
 
@@ -18,18 +18,20 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 			
 			$sql = "SELECT * FROM product ";
-			if($id) $sql.="where id=".$id;
-			elseif ($cid) {
-				$sql.="where cid=".$cid;
+			if($pid) $sql.="where pid=".$pid;
+			elseif ($sid) {
+				$sql.="where sid=".$sid;
 			}
 			elseif ($key) {
 				$sql.="where name like '%".$key."%'";
 			}
-			else $sql.="order by id desc limit 24";
+			
+			$sql.=" order by pid desc limit 27";
 
-			$result = mysqli_query($conn, $sql);
+			$ret = $db->query($sql);
+
 			$dbdata = array();
-			while($row = mysqli_fetch_assoc($result)) {
+			while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
 				$dbdata[]=$row;
 			}
 			echo json_encode($dbdata);
@@ -47,18 +49,20 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 			$price= $_POST['price'];
 
 			$filename=$_FILES['images']['name'];
+			if(!empty($filename)) {
 	        $newFilePath = "../images/".$filename;
 	        $thumbnail="../thumbnail/".$filename;
 
-        	if(move_uploaded_file($_FILES['images']['tmp_name'], $newFilePath)) {
-          		exec("convert ".$newFilePath." -resize 1000x1000 ".$newFilePath);
-          		exec("convert ".$newFilePath." -resize 300x300 ".$thumbnail);
+	        	if(move_uploaded_file($_FILES['images']['tmp_name'], $newFilePath)) {
+	          		exec("convert ".$newFilePath." -resize 1000x1000 ".$newFilePath);
+	          		exec("convert ".$newFilePath." -resize 300x300 ".$thumbnail);
 
+	          	}
           	}
 
 			if($pid) {
 				$sql="update product set name='".$name."',cid=".$craft.",image='".$imgstr."',gid=".$graph.",sid=".$style.",spec='".$spec."',price=".$price;
-            	$sql.=" where id=".$pid;
+            	$sql.=" where pid=".$pid;
 			}
 			else {
 				$sql="insert into product (name,image,cid,gid,sid,spec,price) values ('".$name."','";
