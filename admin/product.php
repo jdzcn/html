@@ -59,16 +59,16 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 	          	}
           	}
-
-			if($pid) {
-				$sql="update product set name='".$name."',cid=".$craft.",image='".$imgstr."',gid=".$graph.",sid=".$style.",spec='".$spec."',price=".$price;
-            	$sql.=" where pid=".$pid;
-			}
-			else {
 				$sql="insert into product (name,image,cid,gid,sid,spec,price) values ('".$name."','";
             	$sql.=$imgstr."',".$craft.",".$graph.",".$style.",'".$spec."',";
             	$sql.=$price.")";
-        	}
+			if($pid!="0") {
+				$sql="update product set name='".$name."',cid=".$craft.",image='".$imgstr."',gid=".$graph.",sid=".$style.",spec='".$spec."',price=".$price;
+            	$sql.=" where pid=".$pid;
+			}
+
+
+
 
         	echo $sql;
             if ($db->exec($sql)) echo "update successful.";

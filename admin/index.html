@@ -274,7 +274,16 @@ fetch(myweb+"list.php?table=style").then(function(response) {
   				
  
 			}
-			// aside.appendChild(ul);
+						  				var li = document.createElement("li");
+					let a=document.createElement("a");
+					a.href="#";
+					
+					
+					
+					a.setAttribute('onclick', "showmodal('0')");
+  				a.textContent="添加商品";
+  				li.appendChild(a);
+  				ul.appendChild(li);
   });
 });
 
@@ -372,7 +381,20 @@ window.onclick = function(event) {
 }
 
 function showmodal(pid) {
-
+		if (pid=="0") {
+	document.getElementById("pid").value=pid;
+	document.getElementById("result").innerHTML="";
+	document.getElementById("name").value="";
+	document.getElementById("images").value="";
+	document.getElementById("imgstr").value="";
+	document.getElementById("style").value=1;
+	document.getElementById("graph").value=2;
+	document.getElementById("craft").value=1;
+	document.getElementById("spec").value="";
+	document.getElementById("price").value="0";
+	getname();
+}
+if (pid!="0") {
 fetch(myweb+"product.php?pid="+pid).then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
@@ -413,8 +435,9 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 
   });
 });	
-
+}
 	modal.style.display = 'block';
+	updatedata('');
 }
 
 		function handleFileSelect() {
@@ -453,7 +476,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
             picReader.readAsDataURL(file);
             imgs.value+=file.name+(i==(len-1)?"":"|");
         }
-        imgs.value=imgs.value.substr(0,(len-1));
+        // imgs.value=imgs.value.substr(0,(len-1));
 
     } else {
         console.log("Your browser does not support File API");
