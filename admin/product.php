@@ -81,7 +81,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 		case 'DELETE':
 
 
-			$sql="delete from product where id=".$pid;
+			$sql="delete from product where pid=".$pid;
 
 			$img=$_GET['img'];
 
@@ -90,7 +90,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
             	exec("rm -f ../thumbnail/".$img);
 
             }
-          	else echo "Error: ".$sql."<br>".mysqli_error($conn);			
+          				
 
 			break;	
 

@@ -138,13 +138,21 @@ fetch(myweb+"product.php"+str).then(function(response) {
 				
 				d.setAttribute('class', "img");
 				let a=document.createElement("a");
+				let del=document.createElement("a");
+
 				// a.href="view.php?pid="+jsonstr[i].pid;
 				// a.setAttribute('onclick', "alert('"+jsonstr[i].pid+"')");
 				a.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
+				del.setAttribute('onclick', "del_product('"+jsonstr[i].pid+"')");
 
 				a.href="#"
+				del.href="#"
+
 				// a.target="_blank";
   				var img = document.createElement("img");
+  				var delimg=document.createElement("img");
+  				delimg.src="del.png";
+  				del.appendChild(delimg);
   				img.src=myweb+"../thumbnail/"+jsonstr[i].image;
   				img.alt=jsonstr[i].image;
   				a.appendChild(img);
@@ -155,6 +163,7 @@ fetch(myweb+"product.php"+str).then(function(response) {
   				desc.textContent=jsonstr[i].name;
   				d.appendChild(a);
   				d.appendChild(desc);
+  				d.appendChild(del);
 
   				mydiv.appendChild(d);
   				//console.log(jsonstr[i].name);
@@ -313,7 +322,7 @@ fetch(myweb+"list.php?table=style").then(function(response) {
   <div class="modal-content" >
  <span class="close">&times;</span>   
     <div id="modal-content"></div>
-      <output id="result" ></output>    
+      <output id="result" >删除</button></output>   
         <form id="form">
 				<!-- <label for="pid">ID</label> -->
 				<input type="text" id="pid" name="pid" required placeholder=商品编号>
@@ -437,7 +446,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 });	
 }
 	modal.style.display = 'block';
-	updatedata('');
+	// updatedata('');
 }
 
 		function handleFileSelect() {
