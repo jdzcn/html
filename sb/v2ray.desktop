@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=v2ray
+Exec=/home/sb/v2ray/v2ray
+
+Icon=/home/sb/v2ray/v2ray.png
+Terminal=true
+Type=Application
+Categories=System;TerminalEmulator;

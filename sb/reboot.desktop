@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=reboot
+Exec=sudo systemctl reboot
+
+Terminal=true
+Type=Application
+Categories=System;TerminalEmulator;
