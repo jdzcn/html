@@ -143,23 +143,25 @@ fetch(myweb+"product.php"+str).then(function(response) {
 				// a.href="view.php?pid="+jsonstr[i].pid;
 				// a.setAttribute('onclick', "alert('"+jsonstr[i].pid+"')");
 				a.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
-				del.setAttribute('onclick', "del_product('"+jsonstr[i].pid+"')");
+				del.setAttribute('onclick', "del_product("+jsonstr[i].pid+")");
 
 				a.href="#"
 				del.href="#"
-
+				del.textContent=" del"
 				// a.target="_blank";
   				var img = document.createElement("img");
-  				var delimg=document.createElement("img");
-  				delimg.src="del.png";
-  				del.appendChild(delimg);
+  				// var delimg=document.createElement("img");
+  				// delimg.src="del.png";
+  				// delimg.width="16px";
+  				// delimg.height="16px";
+  				// del.appendChild(delimg);
   				img.src=myweb+"../thumbnail/"+jsonstr[i].image;
   				img.alt=jsonstr[i].image;
   				a.appendChild(img);
   				
   				let desc=document.createElement("a");
   				//desc.setAttribute('class', "desc");
-  				desc.href="images/"+jsonstr[i].image;
+  				desc.href="../images/"+jsonstr[i].image;
   				desc.textContent=jsonstr[i].name;
   				d.appendChild(a);
   				d.appendChild(desc);
