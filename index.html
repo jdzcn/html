@@ -23,7 +23,7 @@ function showmodal(){modal.style.display = 'block';}
 function updatedata(str)
 {
 	
-fetch(myweb+"admin/product.php"+str).then(function(response) {
+fetch(myweb+"product.php"+str).then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 
@@ -65,7 +65,7 @@ fetch(myweb+"admin/product.php"+str).then(function(response) {
 
 function upgraph()
 {
-fetch(myweb+"admin/list.php?table=graph").then(function(response) {
+fetch(myweb+"list.php?table=graph").then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 
@@ -103,7 +103,7 @@ fetch(myweb+"admin/list.php?table=graph").then(function(response) {
 
 function upcraft()
 {
-fetch(myweb+"admin/list.php?table=craft").then(function(response) {
+fetch(myweb+"list.php?table=craft").then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 
@@ -143,7 +143,7 @@ fetch(myweb+"admin/list.php?table=craft").then(function(response) {
 
 function upcategory()
 {
-fetch(myweb+"admin/list.php?table=style").then(function(response) {
+fetch(myweb+"list.php?table=style").then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 
@@ -270,7 +270,7 @@ window.onclick = function(event) {
 
 function showmodal(pid) {
 
-fetch(myweb+"admin/product.php?pid="+pid).then(function(response) {
+fetch(myweb+"product.php?pid="+pid).then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 		var modal = document.getElementById("modal-content");
@@ -382,7 +382,7 @@ form.addEventListener('submit', function(e) {
     // Create payload as new FormData object:
     const payload = new FormData(form);
     // Post the payload using Fetch:
-    fetch('admin/product.php', {
+    fetch('product.php', {
     method: 'POST',
     body: payload,
     })
