@@ -72,7 +72,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
         	echo $sql;
             if ($db->exec($sql)) echo "update successful.";
-          	else echo "Error: ".$sql;
+          	else echo "Error: ".$db->lastErrorMsg();
            
 			
 

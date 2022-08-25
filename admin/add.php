@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="../css/default.css">
+
+  <link rel="stylesheet" type="text/css" href="../css/lightform.css">
+<title>添加商品</title>
+</head>
+<body>
 <?php
     include("conn.php");
 
@@ -196,3 +208,4 @@ getname();
     
     $db->close();
   ?>
+</body></html>
