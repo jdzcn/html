@@ -80,9 +80,11 @@ function del_product(pid,img) {
     .then(response => response.text())
 .then(result => {
   console.log('Success:', result);
+  alert("Update Successful.\n"+result);
 })
 .catch(error => {
   console.error('Error:', error);
+  alert("Update error.\n"+error);
 });
 	}
 }
@@ -436,9 +438,11 @@ form.addEventListener('submit', function(e) {
 .then(response => response.text())
 .then(result => {
   console.log('Success:', result);
+  alert("Update Successful.\n"+result);
 })
 .catch(error => {
   console.error('Error:', error);
+  alert("Update error.\n"+error);
 });
 modal.style.display = "none";
 	});
