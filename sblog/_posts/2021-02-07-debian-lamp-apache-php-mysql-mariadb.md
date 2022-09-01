@@ -42,7 +42,7 @@ OR
 http://localhost/
 ```
 
-![](https://i.loli.net/2021/02/07/gwjktJfDOVLC8GH.png)
+
 
 ### MariaDB
 
