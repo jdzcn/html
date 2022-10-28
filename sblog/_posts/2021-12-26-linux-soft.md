@@ -1,6 +1,6 @@
 ---
 layout: post
-title: linux常用软件推荐
+title: 常用软件推荐
 tags: [linux]
 ---
 
@@ -19,6 +19,7 @@ tags: [linux]
 - firefox
 
 #### 图片浏览器
+- imagine(windows10)
 - viewnior
 - mirage
 - nomacs
