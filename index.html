@@ -1,201 +1,108 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="../css/default.css">
-  <link rel="stylesheet" type="text/css" href="../css/modalbox.css">
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/modalbox.css">
   <link rel="stylesheet" type="text/css" href="css/lightform.css">
-<title>御雅堂</title>
+    <title>御雅堂</title>
+    <style>
+      html {
+        font-family: sans-serif;
+        background: lightgray;
+      }
 
+      body {
+        margin: 0;
+      }
 
-<script>
+      header {
+        background: black;
 
+      }
 
+      h2 {
+        padding: 20px;
+        color: white;
 
-window.onload=function() {upgraph();upcraft();upcategory();updatedata('');}
-
-//const myweb="http://172.96.193.223/";
-const myweb="";
-
-function showmodal(){modal.style.display = 'block';}
-
-function updatedata(str)
-{
-	
-fetch(myweb+"product.php"+str).then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			var mydiv = document.querySelector("main");
-			mydiv.textContent="";
-			for(var i = 0;i<jsonstr.length;i++){
-				
-				let d=document.createElement("div");
-				
-				d.setAttribute('class', "img");
-				let a=document.createElement("a");
-				// a.href="view.php?pid="+jsonstr[i].pid;
-				// a.setAttribute('onclick', "alert('"+jsonstr[i].pid+"')");
-				a.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
-
-				a.href="#"
-				// a.target="_blank";
-  				var img = document.createElement("img");
-  				img.src=myweb+"thumbnail/"+jsonstr[i].image;
-  				img.alt=jsonstr[i].image;
-  				a.appendChild(img);
-  				
-  				let desc=document.createElement("a");
-  				//desc.setAttribute('class', "desc");
-  				desc.href="images/"+jsonstr[i].image;
-  				desc.textContent=jsonstr[i].name;
-  				d.appendChild(a);
-  				d.appendChild(desc);
-
-  				mydiv.appendChild(d);
-  				//console.log(jsonstr[i].name);
- 
-			}
-  });
-});
-
-}
-
-
-function upgraph()
-{
-fetch(myweb+"list.php?table=graph").then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			// var aside= document.querySelector("aside");
-			// let ul=document.createElement("ul");
-			var list = document.getElementById('keylist');
-			var graph = document.getElementById('graph');
-			for(var i = 0;i<jsonstr.length;i++){
-				
-
-  			// 	var li = document.createElement("li");
-					// let a=document.createElement("a");
-					// a.href="#";
-					
-					
-					
-					// a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
-  			// 	a.textContent=jsonstr[i].name;
-  			// 	li.appendChild(a);
-  			// 	ul.appendChild(li);
-  			   var option = document.createElement('option');
-  			   var dl_option = document.createElement('option');
-				   option.text = jsonstr[i].name;
-				   option.value = jsonstr[i].gid;
-				   dl_option.value=jsonstr[i].name;
-				   list.appendChild(dl_option);
-  					graph.appendChild(option);
- 
-			}
-			// aside.appendChild(ul);
-  });
-});
-
-}
-
-function upcraft()
-{
-fetch(myweb+"list.php?table=craft").then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			// var aside= document.querySelector("aside");
-			// let ul=document.createElement("ul");
-			var list = document.getElementById('keylist');
-			var craft = document.getElementById('craft');
-			for(var i = 0;i<jsonstr.length;i++){
-				
-
-  			// 	var li = document.createElement("li");
-					// let a=document.createElement("a");
-					// a.href="#";
-					
-					
-					
-					// a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
-  			// 	a.textContent=jsonstr[i].name;
-  			// 	li.appendChild(a);
-  			// 	ul.appendChild(li);
-  			   var option = document.createElement('option');
-  			   var dl_option = document.createElement('option');
-  			   
-				   option.value = jsonstr[i].cid;
-				   option.text = jsonstr[i].name;
-				   dl_option.value=jsonstr[i].name;
-				   list.appendChild(dl_option);
-				   craft.appendChild(option);
-  				
- 
-			}
-			// aside.appendChild(ul);
-  });
-});
-
-}
-
-function upcategory()
-{
-fetch(myweb+"list.php?table=style").then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			var aside= document.querySelector("aside");
-			// let ul=document.createElement("ul");
-			var ul = document.getElementById('category');
-			var style = document.getElementById('style');
-			for(var i = 0;i<jsonstr.length;i++){
-				
-
-  				var li = document.createElement("li");
-					let a=document.createElement("a");
-					a.href="#";
-					
-					
-					
-					a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
-  				a.textContent=jsonstr[i].name;
-  				li.appendChild(a);
-  				ul.appendChild(li);
-  			   var option = document.createElement('option');
-				   option.text = jsonstr[i].name;
-				   option.value = jsonstr[i].sid;
-				   style.appendChild(option);
-  				
- 
-			}
-			// aside.appendChild(ul);
-  });
-});
-
-}
+        margin: 0;
+      }
 
 
 
+      /* Add your flexbox CSS below here */
+      section {
+        display:flex;
+        flex-wrap:wrap;
+      }
 
-</script>
-</head>
-<body>
-<header>
-	<h3>≡&nbsp;<a href="" id="title">
-      <script type="text/javascript">
-        document.write(document.title)
-      </script></a>
-<input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" list="keylist">
-<datalist id="keylist"></datalist>
-</h3>
+      aside {
+        border-radius: 15px;
+        flex:1 ;
+        padding: 10px;
+        margin: 10px;
+        background: white;
 
-</header>
-<aside><ul id="category"></ul></aside>
-<!-- The Modal -->
-<div id="myModal" class="modal">
+      }
+      main {
+        flex: 5;
+      }
+            ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+        border-bottom: 1px solid #ccc;
+      }
+
+      li:last-child {
+        border: none;
+      }
+
+      li a {
+        text-decoration: none;
+        color: #000;
+
+        -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+        -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+        -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+        -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+        transition: font-size 0.3s ease, background-color 0.3s ease;
+        display: block;
+        width: 200px;
+      }
+
+      li a:hover {
+        font-size: 30px;
+        background: #f6f6f6;
+      }
+
+    @media (max-width: 768px) {
+
+      aside {
+        display:none;
+
+      }
+
+    }
+      
+    </style>
+    <script src="js/init.js"></script>
+  </head>
+  <body>
+    <header>
+      <h2>御雅堂<input id="search" type="search"  placeholder="分类与查找..." onkeyup="updatedata('?key='+this.value)" list="keylist"><datalist id="keylist"></datalist></h2>
+    </header>
+
+    <section>
+      <aside><h4>商品分类</h4>
+          <ul id="category"></ul>
+      </aside>
+      <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content" >
@@ -203,8 +110,8 @@ fetch(myweb+"list.php?table=style").then(function(response) {
     <div id="modal-content"></div>
       <output id="result" ></output>    
         <form id="form">
-				<!-- <label for="pid">ID</label> -->
-				<input type="text" id="pid" name="pid" required placeholder=商品编号>
+        <!-- <label for="pid">ID</label> -->
+        <input type="text" id="pid" name="pid" required placeholder=商品编号>
       <!-- <label for="name">商品名称</label> -->
       <input type="text" id="name" name="name" required placeholder=商品名称>
 
@@ -221,7 +128,7 @@ fetch(myweb+"list.php?table=style").then(function(response) {
 
      <!-- <label for="graph">图案</label> -->
     <select id="graph" name="graph" onchange="getname()">
-    	    </select>  
+          </select>  
 
     <!-- <label for="style">器型</label> -->
     <select id="style" name="style" onchange="getname()">
@@ -235,165 +142,18 @@ fetch(myweb+"list.php?table=style").then(function(response) {
 
     <input type="submit" value="提交">
 
-  </form>	
+  </form> 
 
   </div>
 
 </div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-function showmodal(pid) {
-
-fetch(myweb+"product.php?pid="+pid).then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-		var modal = document.getElementById("modal-content");
-		modal.innerHTML="";
-		var pid = document.getElementById("pid");
-		var name = document.getElementById("name");
-		var imgstr= document.getElementById("imgstr");
-		// var images = document.getElementById("images");
-		var result = document.getElementById("result");
-		var craft = document.getElementById("craft");
-		var graph = document.getElementById("graph");
-		var style = document.getElementById("style");
-		var spec = document.getElementById("spec");
-		var price = document.getElementById("price");
-
-		pid.value=jsonstr[0].pid;
-		name.value=jsonstr[0].name;
-		imgstr.value=jsonstr[0].image;
-		// images.file[0].filename=jsonstr[0].image;
-		result.innerHTML="";
-  				var img = document.createElement("img");
-  				img.src=myweb+"thumbnail/"+jsonstr[0].image;
-  				img.style.width="100px";
-  				img.style.height="100px";
-  				
-  				result.appendChild(img);			
-		craft.value=jsonstr[0].cid;
-		graph.value=jsonstr[0].gid;
-		style.value=jsonstr[0].sid;
-		spec.value=jsonstr[0].spec;
-		price.value=jsonstr[0].price;
+<script src="js/showmodal.js"></script>
+      <main>
 
 
+      </main>
 
+    </section>
 
-	
-
-  });
-});	
-
-	modal.style.display = 'block';
-}
-
-		function handleFileSelect() {
-    //Check File API support
-    if (window.File && window.FileList && window.FileReader) {
-
-        var files = event.target.files; //FileList object
-        var output = document.getElementById("result");
-        var imgs=document.getElementById("imgstr");
-        imgs.value="";
-        output.innerHTML="";
-        var len=files.length;
-        for (var i = 0; i < len; i++) {
-            var file = files[i];
-            //Only pics
-            // if (!file.type.match('image')) continue;
-            
-            const maxAllowedSize = 2 * 1024 * 1024;
-              if (file.size > maxAllowedSize) {
-                alert('文件大小超出限制！');
-                event.target.value ='';
-                break;
-                // Here you can ask your users to load correct file
-                // alert("文件大小超出限制！")；
-                // exit(0);
-              }
-            var picReader = new FileReader();
-            picReader.addEventListener("load", function (event) {
-                var picFile = event.target;
-                var div = document.createElement("div");
-                // div.style="display:inline";
-                div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
-                output.insertBefore(div, null);
-            });
-            //Read the image
-            picReader.readAsDataURL(file);
-            imgs.value+=file.name+(i==(len-1)?"":"|");
-        }
-        imgs.value=imgs.value.substr(0,(len-1));
-
-    } else {
-        console.log("Your browser does not support File API");
-    }
-}
-
-document.getElementById('images').addEventListener('change', handleFileSelect, false);
-
-  function getname() {
-      var craft=document.getElementById('craft');
-      var c=craft.options[craft.selectedIndex].text;
-
-      var graph=document.getElementById('graph');
-      var g=graph.options[graph.selectedIndex].text;
-
-       var style=document.getElementById('style');
-      var s=style.options[style.selectedIndex].text;     
-      document.getElementById('name').value=c+g+s;
-  }
-
-
-  /* Sending the formData object as payload using Fetch */
- 
-const form = document.getElementById('form');
- 
-form.addEventListener('submit', function(e) {
-    // Prevent default behavior:
-    e.preventDefault();
-    // Create payload as new FormData object:
-    const payload = new FormData(form);
-    // Post the payload using Fetch:
-    fetch('product.php', {
-    method: 'POST',
-    body: payload,
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-})
-</script>
-<main>
-
-</main>
-
-<footer><a href="mailto:jdzcn@qq.com">jdzcn@qq.com</a>&nbsp;<a href="admin/">后台管理</a></footer>
-</body>
+  </body>
 </html>
