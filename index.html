@@ -38,12 +38,12 @@
       }
 
       aside {
-        border-radius: 15px;
+
         flex:1 ;
         padding: 10px;
         margin: 10px;
         background: white;
-
+        border-right: 1px solid #999;
       }
       main {
         flex: 5;
@@ -95,7 +95,10 @@
   </head>
   <body>
     <header>
-      <h2>御雅堂<input id="search" type="search"  placeholder="分类与查找..." onkeyup="updatedata('?key='+this.value)" list="keylist"><datalist id="keylist"></datalist></h2>
+      <h1><a href="" id="title">
+      <script type="text/javascript">
+        document.write(document.title)
+      </script></a><input id="search" type="search"  placeholder="分类与查找..." onkeyup="updatedata('?key='+this.value)" list="keylist"><datalist id="keylist"></datalist></h1>
     </header>
 
     <section>

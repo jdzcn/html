@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gary_js实现简单的下拉折叠菜单</title>
+<style>
+* {margin:0px; padding:0px;}
+#div1 {width:200px; margin:0 auto; line-height:25px;}
+ul {list-style:none;}
+li {background:#ccc;margin-bottom:3px;}
+dl {background:#eee;display:none;
+            transform-origin:50% 0;
+            -webkit-animation:gary .5s ease-in;
+            transition: all .3s infinite;}
+.active {background:#F90;}
+@-webkit-keyframes gary{
+                                0%{transform:scale(1,0);}
+                                25%{transform:scale(1,1.2);}    
+                                50%{transform:scale(1,0.85);}        
+                                75%{transform:scale(1,1.05);}        
+                                100%{transform:scale(1,1);}    
+                            }
+
+</style>
+<script>
+//此处编写js代码，实现简单的下拉折叠菜单，默认菜单1是展开的
+    window.onload = function () {
+        var lis = document.getElementsByTagName('li');
+        var dls = document.getElementsByTagName('dl');
+        for (var i = 0; i < lis.length; i ++) {
+            lis[i].index = i;
+            lis[i].onclick = function () {
+            for (var i = 0; i < lis.length; i ++) {
+                lis[i].className ='';
+                }
+                this.className = 'active';
+                if(dls[this.index].style.display == 'block')
+                    dls[this.index].style.display = 'none'
+                else
+                    dls[this.index].style.display = 'block'
+            }
+        }
+    }
+</script>
+</head>
+
+<body>
+<div id="div1">
+    <ul id="menu">
+        <li class="active">菜单1</li>
+            <dl style="display:block;">
+                <dd>菜单1.1</dd>
+                <dd>菜单1.2</dd>
+                <dd>菜单1.3</dd>
+                <dd>菜单1.4</dd>
+            </dl>
+        <li>菜单2</li>
+            <dl>
+                <dd>菜单2.1</dd>
+                <dd>菜单2.2</dd>
+                <dd>菜单2.3</dd>
+                <dd>菜单2.4</dd>
+            </dl>
+        <li>菜单3</li>
+            <dl>
+                <dd>菜单3.1</dd>
+                <dd>菜单3.2</dd>
+                <dd>菜单3.3</dd>
+                <dd>菜单3.4</dd>
+            </dl>
+    </ul>
+</div>
+</body>
+</html>
