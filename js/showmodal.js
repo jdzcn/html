@@ -14,15 +14,25 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  modal.style.width = "0";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.style.width = "0";
   }
 }
+
+function menu() {
+  //var a = document.getElementById("menu");
+  var a=document.querySelector("aside");
+  if (a.style.display=="block")
+    a.style.display="none";
+  else
+    a.style.display="block";
+}
+
 
 function showmodal(pid) {
 
@@ -67,7 +77,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
   });
 });	
 
-	modal.style.display = 'block';
+	modal.style.width = '400px';
 }
 
 		function handleFileSelect() {

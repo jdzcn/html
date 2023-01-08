@@ -19,11 +19,14 @@
 
       header {
         background: black;
-
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 60px;
       }
 
-      h2 {
-        padding: 20px;
+      h1 ,h2{
+        display: inline-block;
         color: white;
 
         margin: 0;
@@ -35,27 +38,30 @@
       section {
         display:flex;
         flex-wrap:wrap;
+        margin-top: 80px;
       }
 
       aside {
-
+        
         flex:1 ;
         padding: 10px;
         margin: 10px;
-        background: white;
+        display: block;
         border-right: 1px solid #999;
       }
       main {
         flex: 5;
       }
-            ul {
+      
+            
+      ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
       }
 
       li {
-        font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+        font: 200 18px/1.5 Helvetica, Verdana, sans-serif;
         border-bottom: 1px solid #ccc;
       }
 
@@ -72,13 +78,17 @@
         -o-transition: font-size 0.3s ease, background-color 0.3s ease;
         -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
         transition: font-size 0.3s ease, background-color 0.3s ease;
-        display: block;
+        display: inline-block;
         width: 200px;
       }
 
       li a:hover {
-        font-size: 30px;
+        font-size: 20px;
         background: #f6f6f6;
+      }
+      
+      span {
+        cursor: grab;
       }
 
     @media (max-width: 768px) {
@@ -95,14 +105,14 @@
   </head>
   <body>
     <header>
-      <h1><a href="" id="title">
+      <h1><span onclick="menu()">≡</span>&nbsp;</h1><h2><a href="" id="title">
       <script type="text/javascript">
         document.write(document.title)
-      </script></a><input id="search" type="search"  placeholder="分类与查找..." onkeyup="updatedata('?key='+this.value)" list="keylist"><datalist id="keylist"></datalist></h1>
+      </script></a></h2><input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" list="keylist"><datalist id="keylist"></datalist>
     </header>
 
     <section>
-      <aside><h4>商品分类</h4>
+      <aside>
           <ul id="category"></ul>
       </aside>
       <div id="myModal" class="modal">
