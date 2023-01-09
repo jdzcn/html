@@ -35,12 +35,29 @@ function menu() {
 
 
 function showmodal(pid) {
-
+    if (pid=="0") {
+  document.getElementById("pid").value=pid;
+  document.getElementById("result").innerHTML="";
+  document.getElementById("name").value="";
+  document.getElementById("images").value="";
+  document.getElementById("imgstr").value="";
+  document.getElementById("style").value=1;
+  document.getElementById("graph").value=2;
+  document.getElementById("craft").value=1;
+  document.getElementById("spec").value="";
+  document.getElementById("price").value="0";
+  getname();
+}
+else {
 fetch(myweb+"product.php?pid="+pid).then(function(response) {
   response.text().then(function(text) {
     var jsonstr=JSON.parse(text);
 		var modal = document.getElementById("modal-content");
 		modal.innerHTML="";
+    var btn=document.getElementById("del");
+    if(btn) {
+      btn.setAttribute('onclick', "del_product("+jsonstr[0].pid+",'"+jsonstr[0].image+"')");
+    }
 		var pid = document.getElementById("pid");
 		var name = document.getElementById("name");
 		var imgstr= document.getElementById("imgstr");
@@ -58,7 +75,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 		// images.file[0].filename=jsonstr[0].image;
 		result.innerHTML="";
   				var img = document.createElement("img");
-  				img.src=myweb+"thumbnail/"+jsonstr[0].image;
+  				img.src=myweb+"../thumbnail/"+jsonstr[0].image;
   				img.style.width="100px";
   				img.style.height="100px";
   				
@@ -76,11 +93,11 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 
   });
 });	
-
+}
 	modal.style.width = '400px';
 }
 
-		function handleFileSelect() {
+    function handleFileSelect() {
     //Check File API support
     if (window.File && window.FileList && window.FileReader) {
 
@@ -116,7 +133,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
             picReader.readAsDataURL(file);
             imgs.value+=file.name+(i==(len-1)?"":"|");
         }
-        imgs.value=imgs.value.substr(0,(len-1));
+        // imgs.value=imgs.value.substr(0,(len-1));
 
     } else {
         console.log("Your browser does not support File API");
@@ -140,18 +157,3 @@ document.getElementById('images').addEventListener('change', handleFileSelect, f
 
   /* Sending the formData object as payload using Fetch */
  
-const form = document.getElementById('form');
- 
-form.addEventListener('submit', function(e) {
-    // Prevent default behavior:
-    e.preventDefault();
-    // Create payload as new FormData object:
-    const payload = new FormData(form);
-    // Post the payload using Fetch:
-    fetch('product.php', {
-    method: 'POST',
-    body: payload,
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-})

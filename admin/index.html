@@ -1,252 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="../css/default.css">
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" type="text/css" href="../css/default.css">
   <link rel="stylesheet" type="text/css" href="../css/modalbox.css">
   <link rel="stylesheet" type="text/css" href="../css/lightform.css">
-<title>御雅堂</title>
+    <title>御雅堂</title>
+    <style>
+        div#menu {
 
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 70px;
+          left: : 0;
+          background: white;
+          overflow-x: hidden;
+          transition: 0.5s;
+        }
 
-<script>
-
-
-
-window.onload=function() {upgraph();upcraft();upcategory();updatedata('');}
-
-//const myweb="http://172.96.193.223/";
-const myweb="";
-
-function showmodal(){modal.style.display = 'block';}
-
-function updatedata(str)
-{
-	
-fetch(myweb+"product.php"+str).then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			var mydiv = document.querySelector("main");
-			mydiv.textContent="";
-			for(var i = 0;i<jsonstr.length;i++){
-				
-				let d=document.createElement("div");
-				
-				d.setAttribute('class', "img");
-				let a=document.createElement("a");
-				let del=document.createElement("a");
-
-				// a.href="view.php?pid="+jsonstr[i].pid;
-				// a.setAttribute('onclick', "alert('"+jsonstr[i].pid+"')");
-				a.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
-				del.setAttribute('onclick', "del_product("+jsonstr[i].pid+",'"+jsonstr[i].image+"')");
-
-				a.href="#"
-				del.href="#"
-				del.textContent=" del"
-				// a.target="_blank";
-  				var img = document.createElement("img");
-  				// var delimg=document.createElement("img");
-  				// delimg.src="del.png";
-  				// delimg.width="16px";
-  				// delimg.height="16px";
-  				// del.appendChild(delimg);
-  				img.src=myweb+"../thumbnail/"+jsonstr[i].image;
-  				img.alt=jsonstr[i].image;
-  				a.appendChild(img);
-  				
-  				let desc=document.createElement("a");
-  				//desc.setAttribute('class', "desc");
-  				desc.href="../images/"+jsonstr[i].image;
-  				desc.textContent=jsonstr[i].name;
-  				d.appendChild(a);
-  				d.appendChild(desc);
-  				d.appendChild(del);
-
-  				mydiv.appendChild(d);
-  				//console.log(jsonstr[i].name);
- 
-			}
-  });
-});
-
-}
-
-function del_product(pid,img) {
-	if(confirm('确定要删除这个商品吗？')) {
-		fetch('product.php?pid='+pid+"&&"+"img="+img, { method: 'DELETE' })
-    .then(response => response.text())
-.then(result => {
-  console.log('Success:', result);
-  alert("Update Successful.\n"+result);updatedata('');
-})
-.catch(error => {
-  console.error('Error:', error);
-  alert("Update error.\n"+error);updatedata('');
-});
-	}
-}
-
-function upgraph()
-{
-fetch(myweb+"list.php?table=graph").then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			// var aside= document.querySelector("aside");
-			// let ul=document.createElement("ul");
-			var list = document.getElementById('keylist');
-			var graph = document.getElementById('graph');
-			for(var i = 0;i<jsonstr.length;i++){
-				
-
-  			// 	var li = document.createElement("li");
-					// let a=document.createElement("a");
-					// a.href="#";
-					
-					
-					
-					// a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
-  			// 	a.textContent=jsonstr[i].name;
-  			// 	li.appendChild(a);
-  			// 	ul.appendChild(li);
-  			   var option = document.createElement('option');
-  			   var dl_option = document.createElement('option');
-				   option.text = jsonstr[i].name;
-				   option.value = jsonstr[i].gid;
-				   dl_option.value=jsonstr[i].name;
-				   list.appendChild(dl_option);
-  					graph.appendChild(option);
- 
-			}
-			// aside.appendChild(ul);
-  });
-});
-
-}
-
-function upcraft()
-{
-fetch(myweb+"list.php?table=craft").then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			// var aside= document.querySelector("aside");
-			// let ul=document.createElement("ul");
-			var list = document.getElementById('keylist');
-			var craft = document.getElementById('craft');
-			for(var i = 0;i<jsonstr.length;i++){
-				
-
-  			// 	var li = document.createElement("li");
-					// let a=document.createElement("a");
-					// a.href="#";
-					
-					
-					
-					// a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
-  			// 	a.textContent=jsonstr[i].name;
-  			// 	li.appendChild(a);
-  			// 	ul.appendChild(li);
-  			   var option = document.createElement('option');
-  			   var dl_option = document.createElement('option');
-  			   
-				   option.value = jsonstr[i].cid;
-				   option.text = jsonstr[i].name;
-				   dl_option.value=jsonstr[i].name;
-				   list.appendChild(dl_option);
-				   craft.appendChild(option);
-  				
- 
-			}
-			// aside.appendChild(ul);
-  });
-});
-
-}
-
-function upcategory()
-{
-fetch(myweb+"list.php?table=style").then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-
-			var aside= document.querySelector("aside");
-			// let ul=document.createElement("ul");
-			var ul = document.getElementById('category');
-			var style = document.getElementById('style');
-			for(var i = 0;i<jsonstr.length;i++){
-				
-
-  				var li = document.createElement("li");
-					let a=document.createElement("a");
-					a.href="#";
-					
-					
-					
-					a.setAttribute('onclick', "updatedata('?sid=" + jsonstr[i].sid + "')");
-  				a.textContent=jsonstr[i].name;
-  				li.appendChild(a);
-  				ul.appendChild(li);
-  			   var option = document.createElement('option');
-				   option.text = jsonstr[i].name;
-				   option.value = jsonstr[i].sid;
-				   style.appendChild(option);
-  				
- 
-			}
-						  				var li = document.createElement("li");
-					let a=document.createElement("a");
-					a.href="#";
-					
-					
-					
-					a.setAttribute('onclick', "showmodal('0')");
-  				a.textContent="添加商品";
-  				li.appendChild(a);
-  				ul.appendChild(li);
-  });
-});
-
-}
-
-
-
-
-</script>
-</head>
-<body>
-<header>
-	<h3>≡&nbsp;<a href="" id="title">
+      
+    </style>
+    <script src="../js/init.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1><span onclick="menu()">≡</span>&nbsp;</h1><h2>
       <script type="text/javascript">
         document.write(document.title)
-      </script></a>
-<input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" list="keylist">
-<datalist id="keylist"></datalist>
-</h3>
+      </script></h2><button id="add" onclick="showmodal('0')">添加商品</button> <input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" >
+    </header>
 
-</header>
-<aside><ul id="category"></ul></aside>
-<!-- The Modal -->
-<div id="myModal" class="modal">
+    <section>
+      <div id="menu">
+
+          <ul id="category"></ul>
+      </div>
+
+      <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content" >
  <span class="close">&times;</span>   
     <div id="modal-content"></div>
-      <output id="result" >删除</button></output>   
+      <output id="result" ></output>  <button id="del">删除</button> 
         <form id="form">
-				<!-- <label for="pid">ID</label> -->
-				<input type="text" id="pid" name="pid" required placeholder=商品编号 readonly>
+        <!-- <label for="pid">ID</label> -->
+        <input type="text" id="pid" name="pid" required placeholder=商品编号>
       <!-- <label for="name">商品名称</label> -->
       <input type="text" id="name" name="name" required placeholder=商品名称>
 
 
       <!-- <label for="images">商品图片</label>      -->
       <input id="images" name="images" type="file" accept="image/*" />
-      <input type="text" id="imgstr" name="imgstr" placeholder=商品图片 readonly>
+      <input type="text" id="imgstr" name="imgstr" placeholder=商品图片>
 
 
   
@@ -256,7 +65,7 @@ fetch(myweb+"list.php?table=style").then(function(response) {
 
      <!-- <label for="graph">图案</label> -->
     <select id="graph" name="graph" onchange="getname()">
-    	    </select>  
+          </select>  
 
     <!-- <label for="style">器型</label> -->
     <select id="style" name="style" onchange="getname()">
@@ -270,159 +79,41 @@ fetch(myweb+"list.php?table=style").then(function(response) {
 
     <input type="submit" value="提交">
 
-  </form>	
+  </form> 
 
   </div>
 
 </div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+<script src="../js/showmodal.js"></script>
+<script type="text/javascript">
+  function menu() {
+  //var a = document.getElementById("menu");
+  var a=document.getElementById("menu");
+  //let cat=document.getElementById("category");
+  //console.log(a.style.width);
+  if (a.style.width=="0px")
+    a.style.width="300px";
+    //cat.style.display="block";
+  else
+    //cat.style.display="none";
+    a.style.width="0px";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+function del_product(pid,img) {
+  if(confirm('确定要删除id'+pid+'吗？')) {
+    fetch('product.php?pid='+pid+"&&"+"img="+img, { method: 'DELETE' })
+    .then(response => response.text())
+.then(result => {
+  console.log('Success:', result);
+  alert("Update Successful.\n"+result);updatedata('');
+})
+.catch(error => {
+  console.error('Error:', error);
+  alert("Update error.\n"+error);updatedata('');
+});
   }
 }
 
-function showmodal(pid) {
-		if (pid=="0") {
-	document.getElementById("pid").value=pid;
-	document.getElementById("result").innerHTML="";
-	document.getElementById("name").value="";
-	document.getElementById("images").value="";
-	document.getElementById("imgstr").value="";
-	document.getElementById("style").value=1;
-	document.getElementById("graph").value=2;
-	document.getElementById("craft").value=1;
-	document.getElementById("spec").value="";
-	document.getElementById("price").value="0";
-	getname();
-}
-if (pid!="0") {
-fetch(myweb+"product.php?pid="+pid).then(function(response) {
-  response.text().then(function(text) {
-    var jsonstr=JSON.parse(text);
-		var modal = document.getElementById("modal-content");
-		modal.innerHTML="";
-		var pid = document.getElementById("pid");
-		var name = document.getElementById("name");
-		var imgstr= document.getElementById("imgstr");
-		// var images = document.getElementById("images");
-		var result = document.getElementById("result");
-		var craft = document.getElementById("craft");
-		var graph = document.getElementById("graph");
-		var style = document.getElementById("style");
-		var spec = document.getElementById("spec");
-		var price = document.getElementById("price");
-
-		pid.value=jsonstr[0].pid;
-		name.value=jsonstr[0].name;
-		imgstr.value=jsonstr[0].image;
-		// images.file[0].filename=jsonstr[0].image;
-		result.innerHTML="";
-  				var img = document.createElement("img");
-  				img.src=myweb+"../thumbnail/"+jsonstr[0].image;
-  				img.style.width="100px";
-  				img.style.height="100px";
-  				
-  				result.appendChild(img);			
-		craft.value=jsonstr[0].cid;
-		graph.value=jsonstr[0].gid;
-		style.value=jsonstr[0].sid;
-		spec.value=jsonstr[0].spec;
-		price.value=jsonstr[0].price;
-
-
-
-
-	
-
-  });
-});	
-}
-	modal.style.display = 'block';
-	// updatedata('');
-}
-
-		function handleFileSelect() {
-    //Check File API support
-    if (window.File && window.FileList && window.FileReader) {
-
-        var files = event.target.files; //FileList object
-        var output = document.getElementById("result");
-        var imgs=document.getElementById("imgstr");
-        imgs.value="";
-        output.innerHTML="";
-        var len=files.length;
-        for (var i = 0; i < len; i++) {
-            var file = files[i];
-            //Only pics
-            // if (!file.type.match('image')) continue;
-            
-            const maxAllowedSize = 2 * 1024 * 1024;
-              if (file.size > maxAllowedSize) {
-                alert('文件大小超出限制！');
-                event.target.value ='';
-                break;
-                // Here you can ask your users to load correct file
-                // alert("文件大小超出限制！")；
-                // exit(0);
-              }
-            var picReader = new FileReader();
-            picReader.addEventListener("load", function (event) {
-                var picFile = event.target;
-                var div = document.createElement("div");
-                // div.style="display:inline";
-                div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
-                output.insertBefore(div, null);
-            });
-            //Read the image
-            picReader.readAsDataURL(file);
-            imgs.value+=file.name+(i==(len-1)?"":"|");
-        }
-        // imgs.value=imgs.value.substr(0,(len-1));
-
-    } else {
-        console.log("Your browser does not support File API");
-    }
-}
-
-document.getElementById('images').addEventListener('change', handleFileSelect, false);
-
-  function getname() {
-      var craft=document.getElementById('craft');
-      var c=craft.options[craft.selectedIndex].text;
-
-      var graph=document.getElementById('graph');
-      var g=graph.options[graph.selectedIndex].text;
-
-       var style=document.getElementById('style');
-      var s=style.options[style.selectedIndex].text;     
-      document.getElementById('name').value=c+g+s;
-  }
-
-
-    /* Sending the formData object as payload using Fetch */
- 
 const form = document.getElementById("form");
  
 form.addEventListener('submit', function(e) {
@@ -445,12 +136,14 @@ form.addEventListener('submit', function(e) {
   alert("Update error.\n"+error);updatedata('');
 });
 modal.style.display = "none";
-	});
+  });
 </script>
-<main>
+      <main>
 
-</main>
 
-<footer><a href="mailto:jdzcn@qq.com">jdzcn@qq.com</a>&nbsp;<a href="admin/">后台管理</a></footer>
-</body>
+      </main>
+
+    </section>
+
+  </body>
 </html>

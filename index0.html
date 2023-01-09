@@ -8,18 +8,7 @@
   <link rel="stylesheet" type="text/css" href="css/lightform.css">
     <title>御雅堂</title>
     <style>
-        div#menu {
 
-          height: 100%;
-          width: 0;
-          position: fixed;
-          z-index: 1;
-          top: 70px;
-          left: : 0;
-          background: white;
-          overflow-x: hidden;
-          transition: 0.5s;
-        }
       
     </style>
     <script src="js/init.js"></script>
@@ -33,10 +22,9 @@
     </header>
 
     <section>
-      <div id="menu">
-           <ul id="category"></ul>
-      </div>
-
+      <aside>
+          <ul id="category"></ul>
+      </aside>
       <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -75,7 +63,7 @@
     <!-- <label for="price">价格</label> -->
     <input type="number" id="price" name="price" value=0 placeholder=商品单价>
 
-    <!--<input type="submit" value="提交">-->
+    <input type="submit" value="提交">
 
   </form> 
 
@@ -86,15 +74,11 @@
 <script type="text/javascript">
   function menu() {
   //var a = document.getElementById("menu");
-  var a=document.getElementById("menu");
-  //let cat=document.getElementById("category");
-  //console.log(a.style.width);
-  if (a.style.width=="0px")
-    a.style.width="300px";
-    //cat.style.display="block";
+  var a=document.querySelector("aside");
+  if (a.style.display=="block")
+    a.style.display="none";
   else
-    //cat.style.display="none";
-    a.style.width="0px";
+    a.style.display="block";
 }
 </script>
       <main>
