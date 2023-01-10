@@ -94,13 +94,12 @@
 
 		}
 		input#search {
-			float: right;
+			
 			width: 200px;
 			height: 30px;
-			position: relative;
-			top: 20px;
+
 		}
-			img {
+		img {
 
 		width: 190px;
 		height: 190px;
@@ -111,7 +110,7 @@
 
       aside {
         display:none;
-
+        z-index: 1;
       }
 
     }

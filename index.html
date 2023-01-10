@@ -11,10 +11,10 @@
         div#menu {
 
           height: 100%;
-          width: 0;
+          width: 0px;
           position: fixed;
           z-index: 1;
-          top: 70px;
+          top: 0;
           left: : 0;
           background: white;
           overflow-x: hidden;
@@ -26,7 +26,7 @@
   </head>
   <body>
     <header>
-      <h1><span onclick="menu()">≡</span>&nbsp;</h1><h2>
+      <h1><span onclick="menu()" >≡</span>&nbsp;</h1><h2>
       <script type="text/javascript">
         document.write(document.title)
       </script></h2><input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" list="keylist"><datalist id="keylist"></datalist>
@@ -34,14 +34,15 @@
 
     <section>
       <div id="menu">
-           <ul id="category"></ul>
+        <span class="close" onclick="close_menu()">&times;</span>
+           <ul id="category" style="padding: 20px;"></ul>
       </div>
 
       <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content" >
- <span class="close">&times;</span>   
+ <span class="close" onclick="close_pd()">&times;</span>   
     <div id="modal-content"></div>
       <output id="result" ></output>    
         <form id="form">
@@ -84,18 +85,7 @@
 </div>
 <script src="js/showmodal.js"></script>
 <script type="text/javascript">
-  function menu() {
-  //var a = document.getElementById("menu");
-  var a=document.getElementById("menu");
-  //let cat=document.getElementById("category");
-  //console.log(a.style.width);
-  if (a.style.width=="0px")
-    a.style.width="300px";
-    //cat.style.display="block";
-  else
-    //cat.style.display="none";
-    a.style.width="0px";
-}
+
 </script>
       <main>
 

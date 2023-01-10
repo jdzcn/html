@@ -6,6 +6,7 @@
       <link rel="stylesheet" type="text/css" href="../css/default.css">
   <link rel="stylesheet" type="text/css" href="../css/modalbox.css">
   <link rel="stylesheet" type="text/css" href="../css/lightform.css">
+  <link rel="stylesheet" type="text/css" href="../css/snackbar.css">
     <title>御雅堂</title>
     <style>
         div#menu {
@@ -14,11 +15,17 @@
           width: 0;
           position: fixed;
           z-index: 1;
-          top: 70px;
+          top: 0;
           left: : 0;
           background: white;
           overflow-x: hidden;
           transition: 0.5s;
+          
+        }
+        button#add {
+          float: right;
+          position: relative;
+          top:20px;
         }
 
       
@@ -30,20 +37,20 @@
       <h1><span onclick="menu()">≡</span>&nbsp;</h1><h2>
       <script type="text/javascript">
         document.write(document.title)
-      </script></h2><button id="add" onclick="showmodal('0')">添加商品</button> <input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" >
+      </script></h2> <input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" ><button id="add" onclick="showmodal('0')">添加商品</button>
     </header>
 
     <section>
       <div id="menu">
-
-          <ul id="category"></ul>
+          <span class="close" onclick="close_menu()">&times;</span>
+          <ul id="category" style="margin: 20px;"></ul>
       </div>
 
       <div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content" >
- <span class="close">&times;</span>   
+ <span class="close" onclick="close_pd()">&times;</span>   
     <div id="modal-content"></div>
       <output id="result" ></output>  <button id="del">删除</button> 
         <form id="form">
@@ -84,6 +91,7 @@
   </div>
 
 </div>
+<div id="snackbar"></div>
 <script src="../js/showmodal.js"></script>
 <script type="text/javascript">
   function menu() {
@@ -99,19 +107,31 @@
     a.style.width="0px";
 }
 
+function show_msg(msg) {
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+  x.innerHTML=msg;
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function del_product(pid,img) {
   if(confirm('确定要删除id'+pid+'吗？')) {
     fetch('product.php?pid='+pid+"&&"+"img="+img, { method: 'DELETE' })
     .then(response => response.text())
 .then(result => {
   console.log('Success:', result);
-  alert("Update Successful.\n"+result);updatedata('');
+  show_msg("Update Successful.");
 })
 .catch(error => {
   console.error('Error:', error);
-  alert("Update error.\n"+error);updatedata('');
+  show_msg("Update error.");
 });
   }
+  modal.style.display = "none";
+  updatedata('');
 }
 
 const form = document.getElementById("form");
@@ -129,13 +149,14 @@ form.addEventListener('submit', function(e) {
 .then(response => response.text())
 .then(result => {
   console.log('Success:', result);
-  alert("Update Successful.\n"+result);updatedata('');
+  show_msg("Update Successful.");
 })
 .catch(error => {
   console.error('Error:', error);
-  alert("Update error.\n"+error);updatedata('');
+  show_msg("Update error.");
 });
 modal.style.display = "none";
+updatedata('');
   });
 </script>
       <main>

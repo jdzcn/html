@@ -5,7 +5,7 @@ var modal = document.getElementById("myModal");
 // var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+//var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 // btn.onclick = function() {
@@ -13,8 +13,8 @@ var span = document.getElementsByClassName("close")[0];
 // }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.width = "0";
+function close_pd() {
+  document.getElementById("myModal").style.width = "0";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -24,18 +24,28 @@ window.onclick = function(event) {
   }
 }
 
-function menu() {
+  function menu() {
   //var a = document.getElementById("menu");
-  var a=document.querySelector("aside");
-  if (a.style.display=="block")
-    a.style.display="none";
+  var a=document.getElementById("menu");
+  //let cat=document.getElementById("category");
+  //console.log(a.style.width);
+  if (a.style.width=="0px")
+    a.style.width="300px";
+    //cat.style.display="block";
   else
-    a.style.display="block";
+    //cat.style.display="none";
+    a.style.width="0px";
+}
+
+function close_menu() {
+  document.getElementById("menu").style.width="0";
 }
 
 
 function showmodal(pid) {
     if (pid=="0") {
+
+  document.getElementById("del").style.display="none";
   document.getElementById("pid").value=pid;
   document.getElementById("result").innerHTML="";
   document.getElementById("name").value="";
@@ -55,6 +65,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 		var modal = document.getElementById("modal-content");
 		modal.innerHTML="";
     var btn=document.getElementById("del");
+    btn.style.display="block";
     if(btn) {
       btn.setAttribute('onclick', "del_product("+jsonstr[0].pid+",'"+jsonstr[0].image+"')");
     }
