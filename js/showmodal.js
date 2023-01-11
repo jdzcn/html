@@ -65,7 +65,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
 		var modal = document.getElementById("modal-content");
 		modal.innerHTML="";
     var btn=document.getElementById("del");
-    btn.style.display="block";
+    if (btn) btn.style.display="block";
     if(btn) {
       btn.setAttribute('onclick', "del_product("+jsonstr[0].pid+",'"+jsonstr[0].image+"')");
     }
