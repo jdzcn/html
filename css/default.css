@@ -94,8 +94,11 @@
 
 		}
 		input#search {
-			
-			width: 200px;
+      position: absolute;
+      top:15px;
+      right: 10px;
+			float: right;
+			width: 150px;
 			height: 30px;
 
 		}

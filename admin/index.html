@@ -22,11 +22,7 @@
           transition: 0.5s;
           
         }
-        button#add {
-          float: right;
-          position: relative;
-          top:20px;
-        }
+
 
       
     </style>
@@ -37,7 +33,7 @@
       <h1><span onclick="menu()">≡</span>&nbsp;</h1><h2>
       <script type="text/javascript">
         document.write(document.title)
-      </script></h2> <input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" ><button id="add" onclick="showmodal('0')">添加商品</button>
+      </script></h2> <button id="add" onclick="showmodal('0')">添加商品</button><input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" >
     </header>
 
     <section>
@@ -94,6 +90,7 @@
 <div id="snackbar"></div>
 <script src="../js/showmodal.js"></script>
 <script type="text/javascript">
+  /*
   function menu() {
   //var a = document.getElementById("menu");
   var a=document.getElementById("menu");
@@ -106,7 +103,7 @@
     //cat.style.display="none";
     a.style.width="0px";
 }
-
+*/
 function show_msg(msg) {
   var x = document.getElementById("snackbar");
 
@@ -118,7 +115,7 @@ function show_msg(msg) {
 }
 
 function del_product(pid,img) {
-  if(confirm('确定要删除id'+pid+'吗？')) {
+  if(confirm('确定要删除这件商品(id:'+pid+')吗？')) {
     fetch('product.php?pid='+pid+"&&"+"img="+img, { method: 'DELETE' })
     .then(response => response.text())
 .then(result => {

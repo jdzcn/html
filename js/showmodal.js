@@ -25,16 +25,8 @@ window.onclick = function(event) {
 }
 
   function menu() {
-  //var a = document.getElementById("menu");
-  var a=document.getElementById("menu");
-  //let cat=document.getElementById("category");
-  //console.log(a.style.width);
-  if (a.style.width=="0px")
-    a.style.width="300px";
-    //cat.style.display="block";
-  else
-    //cat.style.display="none";
-    a.style.width="0px";
+
+    document.getElementById("menu").style.width="300px";
 }
 
 function close_menu() {
