@@ -6,6 +6,7 @@
       <link rel="stylesheet" type="text/css" href="../css/default.css">
   <link rel="stylesheet" type="text/css" href="../css/modalbox.css">
   <link rel="stylesheet" type="text/css" href="../css/lightform.css">
+  <link rel="stylesheet" type="text/css" href="../css/image.css">
   <link rel="stylesheet" type="text/css" href="../css/snackbar.css">
     <title>御雅堂</title>
     <style>
@@ -88,7 +89,19 @@
 
 </div>
 <div id="snackbar"></div>
+<div id="pimg" class="image">
+
+  <!-- The Close Button -->
+  <span class="imgclose" onclick="document.getElementById('pimg').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="image-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+
+</div>
 <script src="../js/showmodal.js"></script>
+<script src="../js/image.js"></script>
 <script type="text/javascript">
   /*
   function menu() {

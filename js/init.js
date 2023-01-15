@@ -21,8 +21,9 @@ fetch(myweb+"product.php"+str).then(function(response) {
 				
 				d.setAttribute('class', "img");
 				let a=document.createElement("a");
-
-				a.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
+        let imgfile=myweb+"images/"+jsonstr[i].image;
+				//a.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
+        a.setAttribute('onclick', "showimg('"+imgfile+"')");
 
 				a.href="#"
 
@@ -32,8 +33,8 @@ fetch(myweb+"product.php"+str).then(function(response) {
   				a.appendChild(img);
   				
   				let desc=document.createElement("a");
-
-  				desc.href="images/"+jsonstr[i].image;
+          desc.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
+  				//desc.href="images/"+jsonstr[i].image;
   				desc.textContent=jsonstr[i].name;
   				d.appendChild(a);
   				d.appendChild(desc);
