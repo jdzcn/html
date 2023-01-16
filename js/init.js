@@ -33,6 +33,7 @@ fetch(myweb+"product.php"+str).then(function(response) {
   				a.appendChild(img);
   				
   				let desc=document.createElement("a");
+          desc.href="#";
           desc.setAttribute('onclick', "showmodal('"+jsonstr[i].pid+"')");
   				//desc.href="images/"+jsonstr[i].image;
   				desc.textContent=jsonstr[i].name;
