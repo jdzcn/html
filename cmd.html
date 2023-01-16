@@ -5,11 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="">
-	<title>Document</title>
+	<title>linux command</title>
 	<style type="text/css">
 * {
   box-sizing: border-box;
   font-size: 1em;
+  
 }
 
 .row {
@@ -17,7 +18,12 @@
   margin-left:-5px;
   margin-right:-5px;
 }
-  
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+     }
+ 
 .column {
 	flex: 1;
   
@@ -74,15 +80,15 @@ tr:nth-child(even) {
 	</tr>
 	<tr>
 	<td>ls -la /home</td>
-	<td>列文件详细资料</td>
+	<td>目录详情</td>
 	</tr>
 	<tr >
 	<td>ls -d */</td>
-	<td>仅列出目录</td>
+	<td>仅列目录</td>
 	</tr>
 	<tr>
 	<td>pwd</td>
-	<td>查看当前目录</td>
+	<td>当前目录</td>
 	</tr>
 	<tr >
 	<td>cd</td>
@@ -90,7 +96,7 @@ tr:nth-child(even) {
 	</tr>
 	<tr>
 	<td>rm -rf test</td>
-	<td>删除子目录</td>
+	<td>删除目录</td>
 	</tr>
 	<tr >
 	<td>mkdir</td>
@@ -98,35 +104,45 @@ tr:nth-child(even) {
 	</tr>
 	<tr>
 	<td>mv</td>
-	<td>移动或改名文件</td>
+	<td>移动改名</td>
 	</tr>
 	<tr >
 	<td>cp -a test1 test2</td>
-	<td>复制整个目录</td>
+	<td>复制目录</td>
 	</tr>
 	<tr>
 	<td>touch test.txt</td>
-	<td>新建空文件</td>
+	<td>新建文件</td>
 	</tr>
 	<tr >
 	<td>cat,tac,more,less,head,tail</td>
-	<td>显示文件内容</td>
+	<td>显示文件</td>
 	</tr>
+
+	<tr >
+	<td>tail -10 /var/log/apache2/access.log</td>
+	<td>存取日志</td>
+	</tr>	
+	<tr >
+	<td>tail -10 /var/log/apache2/error.log</td>
+	<td>错误日志</td>
+	</tr>	
+
 	<tr >
 	<td>ln -s file link</td>
 	<td>建立连接</td>
 	</tr>
 	<tr >
 	<td>diff text1.txt text2.txt</td>
-	<td>比较文件或目录</td>
+	<td>比较文件</td>
 	</tr>
 	<tr >
 	<td>chown 777 file</td>
-	<td>改变文件权限</td>
+	<td>改变权限</td>
 	</tr>
 	<tr >
 	<td>chown -R oracle:dba /home/oracle</td>
-	<td>改变文件拥有者</td>
+	<td>改拥有者</td>
 	</tr>
 	<tr>
 	  <th colspan="2">TAR包操作</th>
@@ -134,34 +150,34 @@ tr:nth-child(even) {
 	</tr>
 	<tr >
 	<td> tar cvzf name.tar.gz *.jpg</td>
-	<td>打包压缩文件</td>
+	<td>打包压缩</td>
 	</tr>	
 	<tr >
 	<td> tar cvzf name.tar.gz dirname/</td>
-	<td>打包压缩目录</td>
+	<td>打压目录</td>
 	</tr>
 	<tr >
 	<td> tar -czvf backup.tar ./ --exclude=backup.tar</td>
-	<td>打包排除文件</td>
+	<td>排除文件</td>
 	</tr>
 
 	<tr >
 	<td>tar xvzf name.tar.gz [-C dir]</td>
-	<td>解压到目录</td>
+	<td>解压到</td>
 	</tr>
 	<tr >
 	<td>tar xvjf name.tar.bz2</td>
-	<td>解压缩bz2文件</td>
+	<td>解bz文件</td>
 	</tr>
 	<tr >
 	<td>tar xvJf name.tar.xz</td>
-	<td>解压缩xz文件</td>
+	<td>解xz文件</td>
 	</tr>
 	<tr >
 	<td>tar tvf archive_name.tar</td>
-	<td>查看压缩文件包</td>
+	<td>查看压缩</td>
 	</tr>
-	<tr><td colspan="2"></td></tr>
+
 	<tr>
 	  <th colspan="2">文件查找操作</th>
 	  
@@ -174,27 +190,21 @@ tr:nth-child(even) {
 	<td>whereis</td>
 	<td>查找文件路径</td>
 	</tr>
-
-	<tr >
-	<td>locate /etc/m</td>
-	<td>查找/etc所有m开头文件</td>
-	</tr>
 	<tr >
 	<td>find . !-name "*.txt"</td>
 	<td>查找非txt文件</td>
 	</tr>
-
 	<tr >
 	<td>find . -name "*.c" -exec ls -l {} \:</td>
 	<td>查找c文件并列表</td>
 	</tr>
 	<tr >
 	<td>grep -i "the" demo_file</td>
-	<td>文件中查询指定字符串</td>
+	<td>查询字符串</td>
 	</tr>
 	<tr >
 	<td>grep -r "ramesh" *</td>
-	<td>递归查询包含指定字符串的文件</td>
+	<td>查含字符串文件</td>
 	</tr>
 
 
@@ -408,16 +418,35 @@ tr:nth-child(even) {
 	<td>rclone sync -P md:dir/ ~/dir</td>
 	<td>显示进程</td>
 	</tr>	
-		<tr>
+	<tr>
+	  <th colspan="2">YOUTUBE-DL</th>
+	</tr>
+	<tr >
+	<td>youtube-dl -F url</td>
+	<td>下载列表</td>
+	</tr>
+	<tr >
+	<td>youtube-dl -f best url</td>
+	<td>选择下载</td>
+	</tr>
+	<tr >
+	<td>youtube-dl --proxy socks5://127.0.0.1:1080 url</td>
+	<td>代理下载</td>
+	</tr>
+	<tr >
+	<td>youtube-dl -x --audio-format mp3  url</td>
+	<td>仅下音频</td>
+	</tr>
+			<tr>
 	  <th colspan="2">防火墙操作</th>
 	</tr>
 	<tr >
 	<td>ufw enable</td>
-	<td>开启防火墙</td>
+	<td>开防火墙</td>
 	</tr>
 	<tr >
 	<td>ufw status verbose</td>
-	<td>防火墙状态</td>
+	<td>防火状态</td>
 	</tr>
 	<tr >
 	<td>ufw allow ssh<br>ufw allow from 192.168.1.0/24 to any port 22</td>
@@ -427,7 +456,6 @@ tr:nth-child(even) {
 	<td>ufw allow samba<br>ufw allow from 192.168.1.0/24 to any app Samba</td>
 	<td>开启samba</td>
 	</tr>
-
 	</table>
 	</div>
 
@@ -506,6 +534,13 @@ tr:nth-child(even) {
 	<tr>
 	  <th colspan="2">GIT操作</th>
 	</tr>
+
+	<tr >
+	<td>git status
+	</td>
+	<td>当前信息</td>
+	</tr>
+
 	<tr >
 	<td>git init
 	</td>
