@@ -70,148 +70,6 @@ tr:nth-child(even) {
 <body>
 	<div class="row">
 	<div class="column"></div>
-
-	<div class="column">
-
-	<table >
-	<tr>
-	  <th colspan="2">文件目录操作</th>
-	  
-	</tr>
-	<tr>
-	<td>ls -la /home</td>
-	<td>目录详情</td>
-	</tr>
-	<tr >
-	<td>ls -d */</td>
-	<td>仅列目录</td>
-	</tr>
-	<tr>
-	<td>pwd</td>
-	<td>当前目录</td>
-	</tr>
-	<tr >
-	<td>cd</td>
-	<td>进入用户目录</td>
-	</tr>
-	<tr>
-	<td>rm -rf test</td>
-	<td>删除目录</td>
-	</tr>
-	<tr >
-	<td>mkdir</td>
-	<td>创建目录</td>
-	</tr>
-	<tr>
-	<td>mv</td>
-	<td>移动改名</td>
-	</tr>
-	<tr >
-	<td>cp -a test1 test2</td>
-	<td>复制目录</td>
-	</tr>
-	<tr>
-	<td>touch test.txt</td>
-	<td>新建文件</td>
-	</tr>
-	<tr >
-	<td>cat,tac,more,less,head,tail</td>
-	<td>显示文件</td>
-	</tr>
-
-	<tr >
-	<td>tail -10 /var/log/apache2/access.log</td>
-	<td>存取日志</td>
-	</tr>	
-	<tr >
-	<td>tail -10 /var/log/apache2/error.log</td>
-	<td>错误日志</td>
-	</tr>	
-
-	<tr >
-	<td>ln -s file link</td>
-	<td>建立连接</td>
-	</tr>
-	<tr >
-	<td>diff text1.txt text2.txt</td>
-	<td>比较文件</td>
-	</tr>
-	<tr >
-	<td>chown 777 file</td>
-	<td>改变权限</td>
-	</tr>
-	<tr >
-	<td>chown -R oracle:dba /home/oracle</td>
-	<td>改拥有者</td>
-	</tr>
-	<tr>
-	  <th colspan="2">TAR包操作</th>
-	  
-	</tr>
-	<tr >
-	<td> tar cvzf name.tar.gz *.jpg</td>
-	<td>打包压缩</td>
-	</tr>	
-	<tr >
-	<td> tar cvzf name.tar.gz dirname/</td>
-	<td>打压目录</td>
-	</tr>
-	<tr >
-	<td> tar -czvf backup.tar ./ --exclude=backup.tar</td>
-	<td>排除文件</td>
-	</tr>
-
-	<tr >
-	<td>tar xvzf name.tar.gz [-C dir]</td>
-	<td>解压到</td>
-	</tr>
-	<tr >
-	<td>tar xvjf name.tar.bz2</td>
-	<td>解bz文件</td>
-	</tr>
-	<tr >
-	<td>tar xvJf name.tar.xz</td>
-	<td>解xz文件</td>
-	</tr>
-	<tr >
-	<td>tar tvf archive_name.tar</td>
-	<td>查看压缩</td>
-	</tr>
-
-	<tr>
-	  <th colspan="2">文件查找操作</th>
-	  
-	</tr>
-	<tr >
-	<td>which pwd</td>
-	<td>查找文件路径</td>
-	</tr>
-	<tr >
-	<td>whereis</td>
-	<td>查找文件路径</td>
-	</tr>
-	<tr >
-	<td>find . !-name "*.txt"</td>
-	<td>查找非txt文件</td>
-	</tr>
-	<tr >
-	<td>find . -name "*.c" -exec ls -l {} \:</td>
-	<td>查找c文件并列表</td>
-	</tr>
-	<tr >
-	<td>grep -i "the" demo_file</td>
-	<td>查询字符串</td>
-	</tr>
-	<tr >
-	<td>grep -r "ramesh" *</td>
-	<td>查含字符串文件</td>
-	</tr>
-
-
-
-	</table>
-	</div>
-
 	<div class="column">
 	<table >
 	<tr>
@@ -290,8 +148,8 @@ tr:nth-child(even) {
 	</tr>
 
 	<tr >
-	<td>ps aux</td>
-	<td>当前进程</td>
+	<td>ps auxk-%mem</td>
+	<td>进程sort</td>
 	</tr>
 	<tr >
 	<td>top</td>
@@ -331,6 +189,12 @@ tr:nth-child(even) {
 	<td>ssh连接</td>
 	</tr>
 	<tr >
+	<td>sftp user@host </td>
+	<td>sftp连接</td>
+	</tr>
+
+
+	<tr >
 	<td>ssh-keygen<br>
 	ssh-copy-id user@host </td>
 	<td>私钥连接</td>
@@ -338,7 +202,12 @@ tr:nth-child(even) {
 	<tr >
 	<td>scp -r /file user@host </td>
 	<td>远程复制</td>
-	</tr>	
+	</tr>
+	<tr >
+	<td>rsync -av source/ user@host:dir </td>
+	<td>远程同步</td>
+	</tr>
+
 	<tr >
 	<td>wget http://172.96.193.223/sb/ly.zip </td>
 	<td>下载文件</td>
@@ -348,9 +217,164 @@ tr:nth-child(even) {
 	<td>远程挂载</td>
 	</tr>
 
+	<tr >
+	<td>python -m http.server 9000</td>
+	<td>http服务</td>
+	</tr>
 
 	</table>
 	</div>
+
+	<div class="column">
+
+	<table >
+	<tr>
+	  <th colspan="2">文件目录操作</th>
+	  
+	</tr>
+	<tr>
+	<td>ls -la /home</td>
+	<td>目录详情</td>
+	</tr>
+	<tr >
+	<td>ls -d */</td>
+	<td>仅列目录</td>
+	</tr>
+	<tr>
+	<td>pwd</td>
+	<td>当前目录</td>
+	</tr>
+	<tr >
+	<td>cd</td>
+	<td>用户目录</td>
+	</tr>
+	<tr>
+	<td>rm -rf test</td>
+	<td>删除目录</td>
+	</tr>
+	<tr >
+	<td>mkdir</td>
+	<td>创建目录</td>
+	</tr>
+	<tr>
+	<td>mv</td>
+	<td>移动改名</td>
+	</tr>
+	<tr >
+	<td>cp -a test1 test2</td>
+	<td>复制目录</td>
+	</tr>
+	<tr>
+	<td>touch test.txt</td>
+	<td>新建文件</td>
+	</tr>
+	<tr >
+	<td>cat,tac,more,less,head,tail</td>
+	<td>显示文件</td>
+	</tr>
+
+	<tr >
+	<td>tail -10 /var/log/apache2/error.log</td>
+	<td>错误日志</td>
+	</tr>	
+
+	<tr >
+	<td>ln -s file link</td>
+	<td>建立连接</td>
+	</tr>
+	<tr >
+	<td>diff text1.txt text2.txt</td>
+	<td>比较文件</td>
+	</tr>
+	<tr >
+	<td>chown 777 file</td>
+	<td>改变权限</td>
+	</tr>
+	<tr >
+	<td>chown -R sb:users dir</td>
+	<td>改拥有者</td>
+	</tr>
+	<tr>
+	  <th colspan="2">TAR包操作</th>
+	  
+	</tr>
+	<tr >
+	<td> tar cvzf name.tar.gz *.jpg</td>
+	<td>打包压缩</td>
+	</tr>	
+	<tr >
+	<td> tar cvzf name.tar.gz dirname/</td>
+	<td>打压目录</td>
+	</tr>
+	<tr >
+	<td> tar -czvf backup.tar ./ --exclude=backup.tar</td>
+	<td>排除文件</td>
+	</tr>
+
+	<tr >
+	<td>tar xvzf name.tar.gz [-C dir]</td>
+	<td>解压到</td>
+	</tr>
+	<tr >
+	<td>tar xvjf name.tar.bz2</td>
+	<td>解bz文件</td>
+	</tr>
+	<tr >
+	<td>tar xvJf name.tar.xz</td>
+	<td>解xz文件</td>
+	</tr>
+	<tr >
+	<td>tar tvf archive_name.tar</td>
+	<td>查看压缩</td>
+	</tr>
+
+	<tr>
+	  <th colspan="2">文件查找操作</th>
+	  
+	</tr>
+	<tr >
+	<td>which pwd</td>
+	<td>查找路径</td>
+	</tr>
+	<tr >
+	<td>whereis</td>
+	<td>查找路径</td>
+	</tr>
+	<tr >
+	<td>find . -type f -empty -ls</td>
+	<td>empty file</td>
+	</tr>	
+	<tr >
+	<td>find . -maxdepth 1 -type d</td>
+	<td>by type</td>
+	</tr>
+	<tr >
+	<td>find . -name "*txt" -exec grep -Hi chrome {} \;</td>
+	<td>by content</td>
+	</tr>	
+	<tr >
+	<td>find . -name "*.c" 2>/dev/null</td>
+	<td>避免权限</td>
+	</tr>
+	<tr >
+	<td>find . -name "*.c" -mtime -1</td>
+	<td>修改天数</td>
+	</tr>
+
+	<tr >
+	<td>grep -i "the" demo_file</td>
+	<td>查询字符</td>
+	</tr>
+	<tr >
+	<td>grep -r "ramesh" *</td>
+	<td>含字文件</td>
+	</tr>
+
+
+
+	</table>
+	</div>
+
 
 
 	<div class="column">
@@ -384,16 +408,17 @@ tr:nth-child(even) {
 	</tr>
 	<tr >
 	<td>dpkg -i soft.deb</td>
-	<td>debian安装deb软件包</td>
+	<td>安装deb</td>
 	</tr>
 	<tr >
 	<td>apt install -f</td>
-	<td>debian修复软件包</td>
+	<td>修复安装</td>
 	</tr>
-	<tr >
+		<tr >
 	<td>chrome --proxy-server="socks5://127.0.0.1:1080"</td>
-	<td>代理运行chrome</td>
+	<td>代理chrome</td>
 	</tr>
+
 	<tr >
 	<td>scrot desktop.png</td>
 	<td>截取桌面</td>
