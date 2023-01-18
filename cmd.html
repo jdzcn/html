@@ -42,13 +42,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
+  height: 100%;
   border: 1px solid #ddd;
 }
 
 th {
 
 	text-align: center;
-	padding: 8px;
+	/*padding: 8px;*/
 	border: 1px solid #ddd;
 
 }
@@ -173,6 +174,35 @@ tr:nth-child(even) {
 	<td>shutdown -r now</td>
 	<td>重启</td>
 	</tr>
+	<tr >
+	<td>crontab -l</td>
+	<td>任务列表</td>
+	</tr>
+
+	<tr >
+	<td>crontab -e</td>
+	<td>编辑任务</td>
+	</tr>
+	<tr >
+	<td>* * * * * sh </td>
+	<td>每分钟</td>
+	</tr>
+	<tr >
+	<td>*/15 * * * * sh </td>
+	<td>每15分</td>
+	</tr>
+	<tr >
+	<td>0 * * * * sh </td>
+	<td>每小时</td>
+	</tr>
+	<tr >
+	<td>15 6 * * * sh </td>
+	<td>每天6:15</td>
+	</tr>	
+	<tr >
+	<td>0 0 * * 5 sh </td>
+	<td>每周5</td>
+	</tr>
 	<tr>
 	  <th colspan="2">网络操作</th>
 	</tr>	
@@ -184,25 +214,7 @@ tr:nth-child(even) {
 	<td>ip a </td>
 	<td>显示ip</td>
 	</tr>
-	<tr >
-	<td>ssh -p port user@host </td>
-	<td>ssh连接</td>
-	</tr>
-	<tr >
-	<td>sftp user@host </td>
-	<td>sftp连接</td>
-	</tr>
 
-
-	<tr >
-	<td>ssh-keygen<br>
-	ssh-copy-id user@host </td>
-	<td>私钥连接</td>
-	</tr>	
-	<tr >
-	<td>scp -r /file user@host </td>
-	<td>远程复制</td>
-	</tr>
 	<tr >
 	<td>rsync -av source/ user@host:dir </td>
 	<td>远程同步</td>
@@ -341,8 +353,8 @@ tr:nth-child(even) {
 	<td>查找路径</td>
 	</tr>
 	<tr >
-	<td>find . -type f -empty -ls</td>
-	<td>empty file</td>
+	<td>find . -type f -empty -ls -delete</td>
+	<td>查空文件</td>
 	</tr>	
 	<tr >
 	<td>find . -maxdepth 1 -type d</td>
@@ -356,17 +368,25 @@ tr:nth-child(even) {
 	<td>find . -name "*.c" 2>/dev/null</td>
 	<td>避免权限</td>
 	</tr>
+
 	<tr >
 	<td>find . -name "*.c" -mtime -1</td>
-	<td>修改天数</td>
+	<td>今日改过</td>
 	</tr>
-
+	<tr >
+	<td>find . -name "*.c" -mtime +30</td>
+	<td>30天未改</td>
+	</tr>	
+	<tr >
+	<td>history|grep ssh</td>
+	<td>查询命令</td>
+	</tr>
 	<tr >
 	<td>grep -i "the" demo_file</td>
 	<td>查询字符</td>
 	</tr>
 	<tr >
-	<td>grep -r "ramesh" *</td>
+	<td>grep -rl "ramesh" *</td>
 	<td>含字文件</td>
 	</tr>
 
@@ -634,7 +654,36 @@ tr:nth-child(even) {
 	</td>
 	<td>提交到远程</td>
 	</tr>
+	<tr>
+	  <th colspan="2">SSH操作</th>
+	</tr>
 
+	<tr >
+	<td>ssh -p port user@host </td>
+	<td>ssh连接</td>
+	</tr>
+	<tr >
+	<td>sftp user@host </td>
+	<td>sftp连接</td>
+	</tr>
+
+
+	<tr >
+	<td>ssh-keygen<br>
+	ssh-copy-id user@host </td>
+	<td>私钥连接</td>
+	</tr>	
+	<tr >
+	<td>scp -r /file user@host </td>
+	<td>远程复制</td>
+	</tr>
+	<tr >
+	<td>Host name<br>
+		User sb<br>
+		Hostname 172.96.193.223<br>
+		Port 28147 </td>
+	<td>~/.ssh/config</td>
+	</tr>	
 	</table>
 	</div>
 
