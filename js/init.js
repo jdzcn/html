@@ -28,6 +28,7 @@ fetch(myweb+"product.php"+str).then(function(response) {
 				a.href="#"
 
   				var img = document.createElement("img");
+          img.setAttribute('class','pd');
   				img.src=myweb+"thumbnail/"+jsonstr[i].image;
   				img.alt=jsonstr[i].image;
   				a.appendChild(img);
