@@ -1,0 +1,4 @@
+refresh_token:"3e77299e7ba641558794c830f41ab5c6"
+
+rclone mount ali:/ ~/ali/ --vfs-cache-mode writes --cache-dir ~/alicache --network-mode --no-check-certificate --default-permissions --header "Referer:https://www.aliyundrive.com/" --vfs-read-chunk-size-limit 1G --vfs-read-chunk-size 64M --dir-cache-time 12h --buffer-size 32M
+

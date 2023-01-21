@@ -16,11 +16,10 @@
         height: 60px;
       }
 
-      h1 ,h2{
+      h2{
         display: inline-block;
-        color: white;
 
-        margin: 0;
+        color: white;
       }
 
 
