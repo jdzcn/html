@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>御雅堂</title>
+        <link rel="stylesheet" type="text/css" href="css/default_full.css">
+        <link rel="stylesheet" type="text/css" href="css/header_black.css">
+        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="css/snackbar.css">
+    </head>
+    <body>
+        <header>
+        	<h2>
+        		<span onclick="document.getElementById('sidebar_left').style.width='400px'" >&#9776;&nbsp;</span>
+        		<script type="text/javascript">document.write(document.title)</script>
+                <span onclick="document.getElementById('sidebar_right').style.width='400px'" style="float: right;">&#133;</span>
+
+        		<!-- <input type="search" name="search" style="float: right;"> -->
+        	</h2>
+        </header>
+
+        <div id="sidebar_left" class="sidebar_left">
+            <span class="close" onclick="this.parentElement.style.width = '0';">&times;</span>
+        </div>
+
+        <div id="sidebar_right" class="sidebar_right">
+            <span class="close" onclick="this.parentElement.style.width = '0';">&times;</span>
+        </div> 
+
+        <div id="sidebar_bottom" class="sidebar_bottom">
+            <span class="close" onclick="this.parentElement.style.height = '0';">&times;</span>
+        </div> 
+
+        <div id="dialog" class="dialog">
+            <span class="close" onclick="this.parentElement.style.display = 'none';">&times;</span>
+        </div> 
+
+        <main>
+        	<aside></aside>
+        	<article>
+                <a href="#" onclick="document.getElementById('sidebar_left').style.width='400px'">左侧对话框</a>  
+                <a href="#" onclick="document.getElementById('sidebar_right').style.width='400px'">右侧对话框</a>  
+                <a href="#" onclick="document.getElementById('sidebar_bottom').style.height='400px'">底部对话框</a>  
+                <a href="#" onclick="document.getElementById('dialog').style.display='block'">普通对话框</a>  
+                <a href="#" onclick="show_msg('这是一个自动关闭通知。')">弹出一个通知</a>
+            </article>
+        </main>
+        <!--
+        <footer>
+            <a href="mailto:jdzcn@qq.com" >联系我们</a>
+        </footer>
+		-->
+        <div id="snackbar"></div>
+
+        <script type="text/javascript">
+            function show_msg(msg) {
+              var x = document.getElementById("snackbar");
+
+              // Add the "show" class to DIV
+              x.className = "show";
+              x.innerHTML=msg;
+              // After 3 seconds, remove the show class from DIV
+              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            }
+        </script>
+    </body>
+</html>

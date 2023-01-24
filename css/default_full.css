@@ -1,0 +1,25 @@
+      html {
+        font-family: sans-serif;
+        background: white;
+      }
+
+      body {
+        margin: 0;
+        background-color: white;
+        min-height:980px;
+		min-width: 200px;
+      }
+      main {
+      	display:flex;
+        flex-wrap:wrap;
+      }
+      aside {
+      	height: 800px;
+      	flex: 1;
+      	background-color: gray;
+      }
+      article{
+      	height: 800px;
+      	flex: 5;
+      	background-color: lightgray;
+      }
