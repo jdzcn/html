@@ -12,14 +12,25 @@
       main {
       	display:flex;
         flex-wrap:wrap;
+        margin-top:80px;
+        width: 100%;
       }
       aside {
-      	height: 800px;
       	flex: 1;
-      	background-color: gray;
+        border-right: 1px gray solid;
+        padding: 10px;
       }
       article{
-      	height: 800px;
       	flex: 5;
-      	background-color: lightgray;
+        padding: 10px;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          flex-direction: column;
+        }
+        aside {
+          width: 100%;
+          display: none;
+        }
       }

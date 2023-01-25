@@ -5,17 +5,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>御雅堂</title>
-        <link rel="stylesheet" type="text/css" href="css/default_full.css">
-        <link rel="stylesheet" type="text/css" href="css/header_black.css">
-        <link rel="stylesheet" type="text/css" href="css/sidebar.css">
-        <link rel="stylesheet" type="text/css" href="css/snackbar.css">
+        <link rel="stylesheet" type="text/css" href="../css/default_full.css">
+        <link rel="stylesheet" type="text/css" href="../css/header_black.css">
+        <link rel="stylesheet" type="text/css" href="../css/sidebar.css">
+        <link rel="stylesheet" type="text/css" href="../css/snackbar.css">
     </head>
     <body>
         <header>
         	<h2>
-        		<span onclick="document.getElementById('sidebar_left').style.width='400px'" >&#9776;&nbsp;</span>
+        		<span onclick="switch_aside()" >&#9776;&nbsp;</span>
         		<script type="text/javascript">document.write(document.title)</script>
-                <span onclick="document.getElementById('sidebar_right').style.width='400px'" style="float: right;">&#133;</span>
+                <span onclick="document.getElementById('sidebar_right').style.width='400px'" style="float: right;">&#8285;</span>
 
         		<!-- <input type="search" name="search" style="float: right;"> -->
         	</h2>
@@ -38,13 +38,17 @@
         </div> 
 
         <main>
-        	<aside></aside>
+        	<aside>
+                <ul>               
+                    <li><a href="#" onclick="document.getElementById('sidebar_left').style.width='400px'">左侧对话框</a>  </li>
+                    <li><a href="#" onclick="document.getElementById('sidebar_right').style.width='400px'">右侧对话框</a> </li> 
+                    <li><a href="#" onclick="document.getElementById('sidebar_bottom').style.height='400px'">底部对话框</a> </li> 
+                    <li><a href="#" onclick="document.getElementById('dialog').style.display='block'">普通对话框</a>  </li>
+                    <li><a href="#" onclick="show_msg('这是一个自动关闭通知。')">弹出一个通知</a></li>
+                </ul>   
+            </aside>
         	<article>
-                <a href="#" onclick="document.getElementById('sidebar_left').style.width='400px'">左侧对话框</a>  
-                <a href="#" onclick="document.getElementById('sidebar_right').style.width='400px'">右侧对话框</a>  
-                <a href="#" onclick="document.getElementById('sidebar_bottom').style.height='400px'">底部对话框</a>  
-                <a href="#" onclick="document.getElementById('dialog').style.display='block'">普通对话框</a>  
-                <a href="#" onclick="show_msg('这是一个自动关闭通知。')">弹出一个通知</a>
+
             </article>
         </main>
         <!--
@@ -52,6 +56,17 @@
             <a href="mailto:jdzcn@qq.com" >联系我们</a>
         </footer>
 		-->
+        <script type="text/javascript">
+            function switch_aside() {
+                let f="block";
+                f=document.querySelector('aside');
+                if(f.style.display=="block")
+                    f.style.display="none";
+                else
+                    f.style.display="block";
+            }
+        </script>
+
         <div id="snackbar"></div>
 
         <script type="text/javascript">
