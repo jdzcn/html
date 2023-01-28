@@ -393,7 +393,7 @@
               response.text().then(function(text) {
 
                     var jsonstr=JSON.parse(text);
-                    console.log(text);
+                    // console.log(text);
                     var myul = document.getElementById("salelist");
                     myul.innerHTML="";
                         for(var i = 0;i<jsonstr.length;i++){
@@ -528,7 +528,7 @@ f.addEventListener('submit', function(e) {
     // Prevent default behavior:
     e.preventDefault();
     // Create payload as new FormData object:
-    const payload = new FormData(form);
+    const payload = new FormData(f);
     // Post the payload using Fetch:
     fetch('product.php', {
     method: 'POST',

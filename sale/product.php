@@ -28,6 +28,46 @@ include "conn.php";
 
 		case 'POST':
 
+			$pid=$_POST['prod_id'];
+			$name= $_POST['prod_name'];
+			$cost= $_POST['prod_cost'];
+			$price= $_POST['prod_price'];
+
+			$filename=$_FILES['image']['name'];
+
+
+
+			if(!empty($filename)) {
+	        	$thumbnail="_".$filename;
+
+	        	if(move_uploaded_file($_FILES['image']['tmp_name'], $filename)) {
+	          		exec("convert ".$filename." -resize 100x100 ".$thumbnail);
+	          		echo $thumbnail." create sccessful.<br>";
+	          	}
+          	}
+
+			$sql="insert into product (name,cost,price,img) values ('".$name."',".$cost.",".$price.",:photo)";
+
+			if($pid!="0") {
+				$sql="update product set name='".$name."',cost=".$cost.",price=".$price.",img=:photo where pid=".$pid;
+			}
+
+			echo $sql+"<br>";
+
+			$photo = file_get_contents($thumbnail);
+
+
+
+	        $query = $db->prepare($sql);
+	        $query->bindValue(':photo',$photo,SQLITE3_BLOB);
+	        $result = $query->execute();
+			exec("rm -rf ".$filename);
+			echo $filename." delete sccessful.<br>";
+			exec("rm -rf ".$thumbnail);
+			echo $thumbnail." delete sccessful.<br>";
+        	
+            if ($result) echo "update successful.";
+          	else echo "Error: ".$db->lastErrorMsg();
 
 			break;	
 
