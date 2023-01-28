@@ -5,10 +5,13 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 
 	include('conn.php');
-	
-/*	$pid = isset($_GET['pid'])? htmlspecialchars($_GET['pid']) : '';
-	$sid = isset($_GET['sid'])? htmlspecialchars($_GET['sid']) : '';
-	$key = isset($_GET['key'])? htmlspecialchars($_GET['key']) : '';*/
+	$key = isset($_GET['key'])? htmlspecialchars($_GET['key']) : '';
+	$pid = isset($_GET['pid'])? htmlspecialchars($_GET['pid']) : '';
+	$start_date = isset($_GET['start_date'])? htmlspecialchars($_GET['start_date']) : '';
+	$end_date = isset($_GET['end_date'])? htmlspecialchars($_GET['end_date']) : '';
+	$fs = isset($_GET['fs'])? htmlspecialchars($_GET['fs']) : 0;
+
+		// echo $start_date.$end_date.$fs;
 
 
 
@@ -17,26 +20,36 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 		case 'GET':
 
 			
-			$sql = "select id,date,name,number,sale.price,amount,img,sale.cost from sale,product where sale.pid=product.pid order by id desc limit 10";
-			echo $sql;
+			$sql = "select id,date,name,number,sale.price,amount,hex(img) as img,sale.cost,remark from sale,product where sale.pid=product.pid ";
+
+			if($key) $sql=$sql." and remark like '%".$key."%'";
+			if($start_date) $sql=$sql." and date>='".$start_date."' and date<='".$end_date."'";
+			else $sql=$sql." and date> (SELECT DATETIME('now', '-7 day'))";
+
+			$sql.=" order by id desc";
+			// echo $sql;
 
 			$ret = $db->query($sql);
 
 			$dbdata = array();
 			while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
 				$dbdata[]=$row;
-				 echo base64_encode($row['img'])."<br>";
-    
 			}
 			echo json_encode($dbdata);
 			break;
 
 		case 'POST':
-			// $pid=$_POST['pid'];
-			// $name= $_POST['name'];
-			// $craft= $_POST['craft'];
-			// $graph= $_POST['graph'];
-			// $style= $_POST['style'];
+			$pid=$_POST['pid'];
+			$date= $_POST['date'];
+			$number= $_POST['number'];
+			$price= $_POST['price'];
+			$amount= $_POST['amount'];
+			$cost= $_POST['cost'];
+			$remark= $_POST['remark'];
+
+			$sql="insert into sale (date,pid,price,number,amount,cost,remark) values ('".$date."',".$pid.",".$price.",".$number.",".$amount.",".$cost.",'".$remark."')";
+			echo $sql;
+			if ($db->exec($sql)) echo $sql;
 
 			// $imgstr= $_POST['imgstr'];
 			// $spec= $_POST['spec'];
@@ -53,7 +66,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 	  //         	}
    //        	}
-			// 	$sql="insert into product (name,image,cid,gid,sid,spec,price) values ('".$name."','";
+			// 	
    //          	$sql.=$imgstr."',".$craft.",".$graph.",".$style.",'".$spec."',";
    //          	$sql.=$price.")";
 			// if($pid!="0") {
@@ -65,7 +78,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 
         	// echo $sql;
-           //  if ($db->exec($sql)) echo "update successful.";
+           //  
           	// else echo "Error: ".$db->lastErrorMsg();
            
 			
@@ -75,15 +88,11 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 		case 'DELETE':
 
 
-			// $sql="delete from product where pid=".$pid;
+			$sql="delete from sale where id=".$pid;
 
 			// $img=$_GET['img'];
 
-   //          if ($db->exec($sql)) {
-   //          	exec("rm -f ../images/".$img);
-   //          	exec("rm -f ../thumbnail/".$img);
-
-   //          }
+            if ($db->exec($sql)) echo "delete successful.";
           				
 
 			break;	

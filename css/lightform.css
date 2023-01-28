@@ -1,5 +1,5 @@
 
-input[type=text], textarea,input[type=number],input[type=file],select {
+input[type=text], input[type=date],textarea,input[type=number],input[type=file],select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -10,7 +10,7 @@ input[type=text], textarea,input[type=number],input[type=file],select {
   font-size: 1em;
 }
 
-input[type=submit] {
+input[type=submit],input[type=button] {
   font-size: 1em;
   width: 100%;
   background-color: #4CAF50;
@@ -22,11 +22,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type=submit],input[type=button]:hover {
   background-color: #45a049;
 }
 
-img.thumbnail {
-  width: 100px;
-  height: 100px;
-}

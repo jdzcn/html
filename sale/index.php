@@ -71,7 +71,7 @@
                 <?php
                     include('conn.php');
 
-                    $sql = "select id,date,name,number,sale.price,amount,img,sale.cost from sale,product where sale.pid=product.pid order by id desc limit 10";
+                    $sql = "select id,date,name,number,sale.price,amount,img,sale.cost from sale,product where sale.pid=product.pid and date> (SELECT DATETIME('now', '-7 day')) order by id desc";
                     $ret = $db->query($sql);
 
                     $dbdata = array();
@@ -82,7 +82,7 @@
                         <li>
                             <img alt="<?= $row['name'] ?>" src="data:image/jpeg;base64,<?= base64_encode($row['img']) ?>" >
                             <div>
-                            <p><?=$row['date']?><a href="#" onclick="show_msg('第<?=$row['id']?>条记录已经被删除！')" style="float: right;">删除</a></p>
+                            <p><?=$row['date']?><a href="#" onclick="show_msg('第<?=$row['id']?>号记录已经被删除！')" style="float: right;">删除</a></p>
                             
                             <h3><?=$row['name']?></h3>
                             <p style="text-align: right;">
