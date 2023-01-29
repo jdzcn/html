@@ -22,11 +22,12 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 			
 			$sql = "select id,date,name,number,sale.price,amount,hex(img) as img,sale.cost,remark from sale,product where sale.pid=product.pid ";
 
-			if($key) $sql=$sql." and remark like '%".$key."%'";
-			if($start_date) $sql=$sql." and date>='".$start_date."' and date<='".$end_date."'";
-			else $sql=$sql." and date> (SELECT DATETIME('now', '-7 day'))";
+			if($key) $sql=$sql." and remark like '%".$key."%'"." order by id desc";
+			if($start_date) $sql=$sql." and date>='".$start_date."' and date<='".$end_date."'"." order by id desc";
+			else $sql=$sql." order by id desc limit 5";
+			// else $sql=$sql." and date> (SELECT DATETIME('now', '-3 day'))";
 
-			$sql.=" order by id desc";
+			// $sql.=;
 			// echo $sql;
 
 			$ret = $db->query($sql);

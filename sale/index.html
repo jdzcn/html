@@ -141,9 +141,9 @@
                           <label for="louie">明细表</label>
                         </div>
                         <input type="button" value="查询" onclick="find()">
-
+                        <input type="button" value="关闭" onclick="document.getElementById('sidebar_left').style.width = '0';">
                     </fieldset>
-                    <a href="#" onclick="exec_sql()" style="margin-right:10px;float: right;">更多查询</a>
+                    <!-- <a href="#" onclick="exec_sql()" style="margin-right:10px;float: right;">更多查询</a> -->
 
 
 <!--                     
@@ -181,6 +181,7 @@
                     <input type="number" id="pdcost" name="cost" placeholder=销售成本 onFocus="this.select()">
                     <input type="text" id="remark" name="remark" placeholder=备注 onFocus="this.select()">
                     <input type="submit" value="提交">
+                    <input type="button" value="关闭" onclick="document.getElementById('sidebar_right').style.width = '0';">
                     </form>
                     </fieldset>
         </div> 
@@ -204,6 +205,7 @@
                     <input type="number" id="prod_price" name="prod_price" placeholder=参考单价 onFocus="this.select()">
                     <input type="number" id="prod_cost" name="prod_cost" placeholder=销售成本 onFocus="this.select()">
                     <input type="submit" value="提交">
+                    <input type="button" value="关闭" onclick="document.getElementById('product').style.width = '0';">
                     </form>
                     </fieldset>
 
@@ -373,6 +375,19 @@
                             myul.appendChild(li);
 
                         }
+
+                        let a=document.createElement("a");
+                        let l=document.createElement("li");
+                        l.setAttribute('style', "height:20px");
+                        a.href="#";
+                        a.setAttribute("onclick","updatedata()");
+                        a.setAttribute("style","float:right");
+                        a.innerHTML="返回日常明细";
+                        l.appendChild(a);
+                        myul.appendChild(l);
+
+                        // document.querySelector("article").appendChild(a);
+
                     
               });
             });
