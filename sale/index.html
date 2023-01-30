@@ -512,8 +512,8 @@ function upamount() {
 const form = document.getElementById("form");
  
 form.addEventListener('submit', function(e) {
-    let v=document.getElementById("pid");
-    if(v=="0") return;
+    let v=document.getElementById("pid").value;
+    if(v!="0") {
     // Prevent default behavior:
     e.preventDefault();
     // Create payload as new FormData object:
@@ -534,7 +534,9 @@ form.addEventListener('submit', function(e) {
   // show_msg("Update error.");
 });
 document.getElementById("sidebar_right").style.width = "0";
-
+    }
+    else
+        show_msg("未选择商品!");
   });
 
 const f = document.getElementById("prod");
