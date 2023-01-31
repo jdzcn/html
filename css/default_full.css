@@ -7,7 +7,7 @@
         margin: 0;
         background-color: white;
         min-height:980px;
-		min-width: 200px;
+		    min-width: 200px;
       }
       main {
       	display:flex;

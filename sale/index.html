@@ -233,6 +233,7 @@
             // const myweb="http://172.96.193.223/sale/";
 
             var prod,prodnum;
+
             var td=new Date().toISOString().substring(0, 10);
             var sd=new Date().toISOString().substring(0, 8)+"01";
             document.getElementById('sdate').value = td;
@@ -254,6 +255,8 @@
                     var psel = document.getElementById("prod_sel");
 
                     // document.getElementById("pid").value=0;
+                    sel.innerHTML="";
+                    psel.innerHTML="";
 
                     let option=document.createElement('option');
                     option.text="选取商品";
@@ -281,7 +284,6 @@
                           psel.appendChild(prodopt);
 
                         }
-                        // sel.value=1;
               });
             });
 
@@ -467,13 +469,13 @@
                 return btoa(bString);
             }
 
-            function exec_sql() {
+/*            function exec_sql() {
                 let sql = prompt("Please enter your sql", "update sale set ...");
 
                 if (person != null) {
 
                 }
-            }
+            }*/
 
             function show_msg(msg) {
               var x = document.getElementById("snackbar");
@@ -539,6 +541,8 @@ document.getElementById("sidebar_right").style.width = "0";
         show_msg("未选择商品!");
   });
 
+
+
 const f = document.getElementById("prod");
  
 f.addEventListener('submit', function(e) {
@@ -554,6 +558,7 @@ f.addEventListener('submit', function(e) {
 .then(response => response.text())
 .then(result => {
   console.log('Success:', result);
+  uppd();
   show_msg("更新成功！");
 })
 .catch(error => {
