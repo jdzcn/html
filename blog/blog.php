@@ -16,7 +16,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 			
 			$sql = "select id,title from blog ";
-			if($key) $sql=$sql."where title like '%".base64_encode($key)."%'";
+			if($key) $sql=$sql."where title like '%".$key."%' COLLATE NOCASE";
 			elseif($cid) $sql.="where cid=".$cid;
 			$sql.=" order by id desc";
 
@@ -34,7 +34,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 		case 'POST':
 			$id=$_POST['id'];
 			$cid=$_POST['cid'];
-			$title= base64_encode($_POST['title']);
+			$title= $_POST['title'];
 			$blog= base64_encode($_POST['blog']);
 
 			$sql="insert into blog (title,blog,cid) values ('".$title."','".$blog."',".$cid.")";
