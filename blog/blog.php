@@ -18,7 +18,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 			$sql = "select id,title from blog ";
 			if($key) $sql=$sql."where title like '%".$key."%' COLLATE NOCASE";
 			elseif($cid) $sql.="where cid=".$cid;
-			$sql.=" order by id desc";
+			$sql.=" order by id desc limit 28";
 
 			if($id) $sql="select * from blog where id=".$id;
 			// echo $sql;
