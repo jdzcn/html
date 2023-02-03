@@ -30,13 +30,23 @@
         ul#ca {
             list-style-type: none;
         }
+      @media (max-width: 768px) {
+        aside {
+          /*width: 100%;*/
+          border: 1px solid gray;
+        }
+      }
 
-
+        @media screen and (min-width: 70em) {
+            article {
+                column-count: 2;
+            }
+        }
     </style>
     <body>
         <header>
         	<h3>
-        		<span onclick="category()" >&#9776;</span>&nbsp;
+        		<span onclick="document.querySelector('aside').style.display='block'" >&#9776;</span>&nbsp;
         		<span onclick="upblog('')"><script type="text/javascript">document.write(document.title)</script></span>
                 <!--<span onclick="add()" style="text-align:right;width:15px;float: right;">&#43;</span>-->
 
@@ -80,6 +90,7 @@
 
         <main>
             <aside>
+                <span class="close" onclick="this.parentElement.style.display = 'none';">&times;</span>
                 <ul id="ca"></ul>  
             </aside>
         	<article>
@@ -98,7 +109,8 @@
  
             form.addEventListener('submit', function(e) {
                 let v=document.getElementById("title").value;
-                if(v!=null) {
+                let cid=document.getElementById("cid").value;
+                if(v!=null&&cid!="0") {
                 // Prevent default behavior:
                 e.preventDefault();
                 // Create payload as new FormData object:
@@ -121,16 +133,16 @@
             document.getElementById("editblog").style.width = "0";
                 }
                 else
-                    show_msg("Title must enter.");
+                    show_msg("Title or Category is null.");
               });
 
-
+/*
             function category() {
                 let c=document.querySelector('aside');
                 if(c.style.display=='block') c.style.display='none';
                 else c.style.display='block';
             }
-
+*/
             function upblog(str) {
 
               fetch("blog.php?"+str).then(function(response) {
