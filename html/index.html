@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>御雅堂</title>
+        <title>APPNAME</title>
         <link rel="stylesheet" type="text/css" href="../css/default_full.css">
         <link rel="stylesheet" type="text/css" href="../css/header_black.css">
         <link rel="stylesheet" type="text/css" href="../css/sidebar.css">
@@ -13,7 +13,7 @@
     <body>
         <header>
         	<h3>
-        		<span onclick="document.getElementById('sidebar_left').style.width='360px'" >&#9776;&nbsp;</span>
+        		<span onclick="document.querySelector('aside').style.display='block'" >&#9776;&nbsp;</span>
         		<script type="text/javascript">document.write(document.title)</script>
                 <span onclick="document.getElementById('sidebar_right').style.width='360px'" style="float: right;">&#8285;</span>
 
@@ -39,6 +39,7 @@
 
         <main>
         	<aside>
+            <span class="close" onclick="this.parentElement.style.display = 'none';">&times;</span>    
                 <ul>               
                     <li><a href="#" onclick="document.getElementById('sidebar_left').style.width='400px'">左侧对话框</a>  </li>
                     <li><a href="#" onclick="document.getElementById('sidebar_right').style.width='400px'">右侧对话框</a> </li> 
