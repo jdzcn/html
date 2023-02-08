@@ -412,13 +412,19 @@ tr:nth-child(even) {
 	</tr>
 	<tr >
 	<td>pacman -S xterm<br>
-		pacman -R leafpad<br>
 	pacman -Ss wqy-microhei<br>
 	pacman -Si cmus
 	</td>
 	<td>arch安装软件</td>
 	</tr>
-
+	<tr >
+	<td>pacman -Rcns leafpad</td>
+	<td>卸载</td>
+	</tr>
+	<tr >
+	<td>sudo pacman -R $(pacman -Qdtq)</td>
+	<td>卸载亢余</td>
+	</tr>	
 	<tr >
 	<td>apt install alsa-utils<br>
 		apt remove imagemagick<br>
