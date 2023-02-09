@@ -402,36 +402,70 @@ tr:nth-child(even) {
 	<tr>
 	  <th colspan="2">软件操作</th>
 	</tr>
+
 	<tr >
-	<td>pacman -S --needed base-devel<br>
-		git clone https://aur.archlinux.org/ly<br>
-		cd ly<br>
-		makepkg -si
-	</td>
-	<td>AUR安装</td>
+	<td>pacman -S xterm</td>
+	<td>arch安装</td>
 	</tr>
+
 	<tr >
-	<td>pacman -S xterm<br>
-	pacman -Ss wqy-microhei<br>
-	pacman -Si cmus
-	</td>
-	<td>arch安装软件</td>
+	<td>pacman -Ss wqy-microhei</td>
+	<td>search</td>
 	</tr>
+
+	<tr >
+	<td>pacman -Si cmus</td>
+	<td>detail</td>
+	</tr>
+	
 	<tr >
 	<td>pacman -Rcns leafpad</td>
-	<td>卸载</td>
+	<td>清除</td>
 	</tr>
 	<tr >
-	<td>sudo pacman -R $(pacman -Qdtq)</td>
-	<td>卸载亢余</td>
+	<td>pacman -R $(pacman -Qdtq)</td>
+	<td>清除亢余</td>
+	</tr>
+
+	<tr >
+	<td>apt install alsa-utils</td>
+	<td>debian</td>
+	</tr>
+
+	<tr >
+	<td>apt search foliate</td>
+	<td>search</td>
+	</tr>
+
+	<tr >
+	<td>apt show deadbeef</td>
+	<td>detail</td>
+	</tr>	
+
+	<tr >
+	<td>apt remove imagemagick</td>
+	<td>卸载包</td>
+	</tr>
+
+	<tr >
+	<td>apt purge imagemagick</td>
+	<td>清除包</td>
+	</tr>
+
+	<tr >
+	<td>apt autoremove</td>
+	<td>清除亢余</td>
 	</tr>	
 	<tr >
-	<td>apt install alsa-utils<br>
-		apt remove imagemagick<br>
-		apt search foliate<br>
-	apt show deadbeef</td>
-	<td>debian安装软件</td>
+	<td>apt list --installed|grep viewnior</td>
+	<td>查询安装</td>
 	</tr>
+
+
+
+
+
+
 	<tr >
 	<td>dpkg -i soft.deb</td>
 	<td>安装deb</td>
