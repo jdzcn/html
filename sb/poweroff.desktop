@@ -2,6 +2,7 @@
 Version=1.0
 Name=poweroff
 Exec=sudo systemctl poweroff
+Icon=/home/sb/Downloads/poweroff.png
 
 Terminal=true
 Type=Application

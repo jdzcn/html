@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
-Name=reboot
-Exec=sudo systemctl reboot
-Icon=/home/sb/Downloads/reboot.png
+Name=alist
+Exec=sh /home/sb/alist.sh
+Icon=/home/sb/Downloads/logo.svg
 
 Terminal=true
 Type=Application
