@@ -12,11 +12,6 @@
   <item label="Web browser">
     <action name="Execute"><execute>x-www-browser</execute></action>
   </item>
-<item label="mount movie">
-<action name="Execute">
-<command> sudo mount -t cifs -o password= //192.168.1.21/movie movie</command>
-</action>
-</item>
 
   <!-- This requires the presence of the 'openbox-menu' package to work -->
   <menu id="/Debian" />
