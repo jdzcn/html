@@ -1,6 +1,6 @@
 window.onload=function() {upmenu();updatedata('');}
 
-const myweb="http://172.96.193.223/";
+const myweb="";
 
 
 function showmodal(){modal.style.width = '400px';}
