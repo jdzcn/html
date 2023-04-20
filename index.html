@@ -28,9 +28,16 @@
   <body>
     <header>
       <h2><span onclick="menu()" >&#9776;</span>
-      <script type="text/javascript">
+<!--     
+ <script type="text/javascript">
         document.write(document.title)
-      </script></h2>&nbsp;<button onclick="location.href='admin/'" >后台管理</button> <input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" >
+      </script></h2>&nbsp;<button onclick="location.href='admin/'" >后台管理</button>-->
+<button onclick="location.href='admin/'" >admin</button>
+<button onclick="location.href='sblog/'" >blog</button>
+<button onclick="location.href='sale/'" >sale</button>
+<button onclick="location.href='blog/'" >note</button>
+
+ <input id="search" type="search"  placeholder="查找..." onkeyup="updatedata('?key='+this.value)" >
     </header>
 
     <section>
