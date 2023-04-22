@@ -129,7 +129,7 @@ fetch(myweb+"product.php?pid="+pid).then(function(response) {
                 var picFile = event.target;
                 var div = document.createElement("div");
                 // div.style="display:inline";
-                div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
+                div.innerHTML = "<img class='pd' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
                 output.insertBefore(div, null);
             });
             //Read the image

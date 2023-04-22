@@ -1,6 +1,12 @@
 window.onload=function() {upmenu();updatedata('');}
 
-const myweb="";
+var current_url=window.location.href;
+
+console.log(current_url);
+
+var myweb="";
+
+if(current_url.indexOf('admin')!=-1) myweb='../';
 
 
 function showmodal(){modal.style.width = '400px';}
