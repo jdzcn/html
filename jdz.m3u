@@ -47,6 +47,8 @@ http://117.169.119.199:8080/live/cctv-11/index.m3u8
 http://117.169.119.199:8080/live/HD-8000k-1080P-cctv12/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV12 4M1080,
 http://117.169.119.199:8080/live/cctv-12/index.m3u8
+#EXTINF:-1 group-title="jdz",CCTV13 4M576,
+http://117.169.119.199:8080/live/cctv-13/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV14 8M1080,
 http://117.169.119.199:8080/live/HD-8000k-1080P-cctv14/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV14 4M1080,
@@ -159,8 +161,6 @@ http://117.169.119.199:8080/live/jingsongxy/index.m3u8
 http://117.169.119.199:8080/live/nongyezf/index.m3u8
 #EXTINF:-1 group-title="jdz",NewTV金牌综艺 4M1080,
 http://117.169.119.199:8080/live/saishijx/index.m3u8
-#EXTINF:-1 group-title="jdz",CCTV13 4M576,
-http://117.169.119.199:8080/live/cctv-13/index.m3u8
 #EXTINF:-1 group-title="jdz",CETV1 4M576,
 http://117.169.119.199:8080/live/jiaoyutv/index.m3u8
 #EXTINF:-1 group-title="jdz",CGTN纪录 4M576,
