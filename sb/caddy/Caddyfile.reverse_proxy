@@ -1,0 +1,14 @@
+:443, pan.jdz.buzz
+tls jdzcn1@gmail.com
+route {
+ forward_proxy {
+   basic_auth user pass 
+   hide_ip
+   hide_via
+   probe_resistance
+  }
+ reverse_proxy  http://127.0.0.1:8080  { 
+   header_up  Host  {upstream_hostport}
+   header_up  X-Forwarded-Host  {host}
+  }
+}

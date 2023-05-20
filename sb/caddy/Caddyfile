@@ -1,14 +1,39 @@
-:443, pan.jdz.buzz
-tls jdzcn1@gmail.com
-route {
- forward_proxy {
-   basic_auth user pass 
-   hide_ip
-   hide_via
-   probe_resistance
-  }
- reverse_proxy  http://127.0.0.1:8080  { 
-   header_up  Host  {upstream_hostport}
-   header_up  X-Forwarded-Host  {host}
-  }
+{
+  order forward_proxy before file_server
 }
+:443, pan.jdz.buzz {
+  log {
+	output file /var/log/caddy/access.log
+  }
+  tls jdzcn1@gmail.com
+  forward_proxy {
+    basic_auth sb mfox1plus!
+    hide_ip
+    hide_via
+    probe_resistance
+  }
+
+  #reverse_proxy https://cloud.jdz.buzz
+  root * /var/www/html
+  file_server  
+
+basicauth /blog/* {
+sb $2a$14$Onc5u5XvWSEfofEf1EZyPeYvbLXnU59BY016sjD2Wd/X9b9DKxtNS
+}
+
+
+basicauth /sale/* {
+sb $2a$14$Onc5u5XvWSEfofEf1EZyPeYvbLXnU59BY016sjD2Wd/X9b9DKxtNS
+}
+
+basicauth /admin/* {
+sb $2a$14$Onc5u5XvWSEfofEf1EZyPeYvbLXnU59BY016sjD2Wd/X9b9DKxtNS
+}
+	handle_path /sb {
+		root * /var/www/html/sb
+		file_server browse
+	}
+
+  php_fastcgi unix//run/php/php8.2-fpm.sock
+}
+
