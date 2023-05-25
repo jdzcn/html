@@ -1,5 +1,13 @@
 #EXTM3U
-#EXTINF:-1 group-title="jdz",凤凰中文 10M720,
+#EXTINF:-1 group-title="jdz",CCTV8 4M1080,
+http://117.169.119.199:8080/live/cctv-8/index.m3u8
+#EXTINF:-1 group-title="jdz",江苏卫视 4M1080,
+http://117.169.119.199:8080/live/hdjiangsustv/index.m3u8
+#EXTINF:-1 group-title="jdz",CCTV5 8M1080,
+http://117.169.119.199:8080/live/HD-8000k-1080P-cctv5/index.m3u8
+#EXTINF:-1 group-title="jdz",CCTV5+ 4M1080,
+http://117.169.119.199:8080/live/hdcctv05plus/index.m3u8
+#EXTINF:-1 tvg-name="凤凰中文 10M720" group-title="jdz",凤凰中文 10M720,
 http://117.169.119.199:8080/live/fhchinese/index.m3u8
 #EXTINF:-1 group-title="jdz",凤凰资讯 10M720,
 http://117.169.119.199:8080/live/fhzixun/index.m3u8
@@ -17,10 +25,7 @@ http://117.169.119.199:8080/live/HD-8000k-1080P-cctv3/index.m3u8
 http://117.169.119.199:8080/live/cctv-3/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV4 4M1080,
 http://117.169.119.199:8080/live/cctv-4/index.m3u8
-#EXTINF:-1 group-title="jdz",CCTV5 8M1080,
-http://117.169.119.199:8080/live/HD-8000k-1080P-cctv5/index.m3u8
-#EXTINF:-1 group-title="jdz",CCTV5+ 4M1080,
-http://117.169.119.199:8080/live/hdcctv05plus/index.m3u8
+
 #EXTINF:-1 group-title="jdz",CCTV6 8M1080,
 http://117.169.119.199:8080/live/HD-8000k-1080P-cctv6/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV6 4M1080,
@@ -31,8 +36,7 @@ http://117.169.119.199:8080/live/HD-8000k-1080P-cctv7/index.m3u8
 http://117.169.119.199:8080/live/cctv-7/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV8 8M1080,
 http://117.169.119.199:8080/live/HD-8000k-1080P-cctv8/index.m3u8
-#EXTINF:-1 group-title="jdz",CCTV8 4M1080,
-http://117.169.119.199:8080/live/cctv-8/index.m3u8
+
 #EXTINF:-1 group-title="jdz",CCTV9 8M1080,
 http://117.169.119.199:8080/live/HD-8000k-1080P-cctv9/index.m3u8
 #EXTINF:-1 group-title="jdz",CCTV9 4M1080,
@@ -89,8 +93,7 @@ http://117.169.119.199:8080/live/HD-8000k-1080P-guangdongstv/index.m3u8
 http://117.169.119.199:8080/live/hdguangdongstv/index.m3u8
 #EXTINF:-1 group-title="jdz",江苏卫视 8M1080,
 http://117.169.119.199:8080/live/HD-8000k-1080P-jiangsustv/index.m3u8
-#EXTINF:-1 group-title="jdz",江苏卫视 4M1080,
-http://117.169.119.199:8080/live/hdjiangsustv/index.m3u8
+
 #EXTINF:-1 group-title="jdz",江西卫视 8M1080,
 http://117.169.119.199:8080/live/HD-8000k-1080P-jiangxistv/index.m3u8
 #EXTINF:-1 group-title="jdz",江西卫视 4M1080,
