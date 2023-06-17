@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvt -bg black -fg white -fn "xft:Bitstream Vera Sans Mono:pixelsize=26"
+bindsym $mod+Return exec --no-startup-id urxvt -bg black -fg white -fn "xft:Bitstream Vera Sans Mono:pixelsize=20"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -170,13 +170,13 @@ bar {
         status_command i3status
 	bindsym --release button1 exec --no-startup-id rofi -show drun
 	bindsym --release button2 exec --no-startup-id pcmanfm
-	bindsym --release button3 exec --no-startup-id urxvt -bg black -fg white -fn "xft:Bitstream Vera Sans Mono:pixelsize=26"
+	bindsym --release button3 exec --no-startup-id urxvt -bg black -fg white -fn "xft:Bitstream Vera Sans Mono:pixelsize=20"
 	bindsym --release button4 exec --no-startup-id "amixer -q sset Master 5%+ "
 	bindsym --release button5 exec --no-startup-id "amixer -q sset Master 5%- "
 }
 
 	#exec xrandr --output Virtual1 --mode 1680x1050
-	#workspace 2 output VGA-1
+	workspace 2 output VGA-0
 
 
 	# start a terminal
@@ -196,7 +196,7 @@ bar {
 	#assign [class="netease-cloud-music"] 3
 
 	#默认浮动窗口
-	#for_window [class="XTerm"] floating enable
+	for_window [class="URxvt"] floating enable
 
 	#自定义键盘
 	#bindsym Super exec "rofi -combi-modi drun,run,ssh -theme solarized -font 'hack 10' -show combi"
@@ -216,4 +216,4 @@ bar {
 	#exec fcitx &
 	#exec_always --no-startup-id volumeicon	
 	#exec_always --no-startup-id tint2
-	exec_always --no-startup-id ~/wallpaper/wallpaper.sh
+	#exec_always --no-startup-id ~/wallpaper/wallpaper.sh

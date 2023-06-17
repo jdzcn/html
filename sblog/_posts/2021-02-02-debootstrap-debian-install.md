@@ -25,6 +25,7 @@ mount /dev/sda1 /mnt
 ```shell
 #/etc/apt/sources.list
 deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware
 ```
 ### 安装
 
