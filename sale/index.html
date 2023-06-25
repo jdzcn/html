@@ -133,13 +133,21 @@
 
                         <div>
                           <input type="radio" id="find_id" name="find_id" value="2">
-                          <label for="louie">商品汇总表</label>
+                          <label for="louie">大分类汇总表</label>
                         </div>
 
                         <div>
                           <input type="radio" id="find_id" name="find_id" value="3">
+                          <label for="louie">小分类汇总表</label>
+                        </div>
+
+
+                        <div>
+                          <input type="radio" id="find_id" name="find_id" value="4">
                           <label for="louie">明细表</label>
                         </div>
+
+
                         <input type="button" value="查询" onclick="find()">
                         <input type="button" value="关闭" onclick="document.getElementById('sidebar_left').style.width = '0';">
                     </fieldset>
@@ -274,8 +282,8 @@
                            let option = document.createElement('option');
                            let prodopt= document.createElement('option');
 
-                           option.text=prod[i].name;
-                           prodopt.text=prod[i].name;
+                           option.text=prod[i].category+"->"+prod[i].name;
+                           prodopt.text=prod[i].category+"->"+prod[i].name;
                            // if(i==0) option.selected=true;
                           option.value =prod[i].pid;
                           prodopt.value =prod[i].pid;
@@ -435,9 +443,9 @@
                             d.appendChild(a);
 
                             let h = document.createElement("h4");
-                            h.innerHTML=jsonstr[i].name;
+                            h.innerHTML=jsonstr[i].category+"->"+jsonstr[i].name;
 
-                            let p = document.createElement("span");
+                            let p = document.createElement("h5");
                             p.setAttribute('style', "float:right");
                             p.innerHTML=jsonstr[i].number+"X"+jsonstr[i].price+"="+jsonstr[i].amount+"-"+jsonstr[i].cost+"=<span style='color:red'>"+(jsonstr[i].amount-jsonstr[i].cost)+"</span>";
 
@@ -587,7 +595,7 @@ function find() {
             document.getElementById("sidebar_left").style.width="0px";
             topFunction();
 
-            if(fs=="3")
+            if(fs=="4")
             updatedata("start_date="+start_date,"end_date="+end_date,"fs="+fs);
             else
             sum("start_date="+start_date,"end_date="+end_date,"fs="+fs);    

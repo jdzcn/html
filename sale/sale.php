@@ -20,7 +20,7 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 		case 'GET':
 
 			
-			$sql = "select id,date,name,number,sale.price,amount,hex(img) as img,sale.cost,remark from sale,product where sale.pid=product.pid ";
+			$sql = "select id,date,product.name as name,category.name as category,number,sale.price,amount,hex(img) as img,sale.cost,remark from sale,product,category where sale.pid=product.pid and category.cid=product.cid ";
 
 			if($key) $sql=$sql." and remark like '%".$key."%'"." order by id desc";
 			elseif($start_date) $sql=$sql." and date>='".$start_date."' and date<='".$end_date."'"." order by id desc";

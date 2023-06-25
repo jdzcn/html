@@ -13,9 +13,10 @@ include "conn.php";
 		case 'GET':
 
 			
-			$sql = "SELECT pid,name,price,cost,hex(img) as img FROM product ";
+			$sql = "SELECT pid,(product.name) as name,category.name as category,price,cost,hex(img) as img FROM product,category where category.cid=product.cid ";
 
-			if($pid) $sql.="where pid=".$pid;
+			if($pid) $sql.="and pid=".$pid;
+			$sql.=" order by category.cid ";
 
 			$ret = $db->query($sql);
 

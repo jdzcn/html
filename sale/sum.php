@@ -11,7 +11,8 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 	$datestr=" date>='".$start_date."' and date<='".$end_date."'";	
 	$sql= array("select date as one,sum(amount) as two,sum(amount-cost) as three from sale where".$datestr." group by date order by date desc",
                 "select substr(date,1,7) as one,sum(amount) as two,sum(amount-cost) as three from sale where".$datestr." group by substr(date,1,7) order by substr(date,1,7) desc",
-                "select name as one,sum(amount) as two ,sum(amount-sale.cost) as three from sale,product where sale.pid=product.pid and".$datestr."group by sale.pid order by three desc");
+                "select category.name as one,sum(amount) as two,sum(amount-sale.cost)as three from sale,product,category where sale.pid=product.pid AND product.cid=category.cid and ".$datestr."GROUP by category.name ORDER by three DESC",
+                "select category.name||'"."->"."'||product.name as one,sum(amount) as two,sum(amount-sale.cost) as three from sale,product,category where sale.pid=product.pid and category.cid=product.cid and ".$datestr." group by one order by three desc");
 	$i=(integer)$fs;
 
 	// echo $sql[$i]."<br>";
