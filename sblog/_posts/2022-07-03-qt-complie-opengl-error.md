@@ -1,6 +1,14 @@
 ---
 layout: post
-title: 解决Qt cannot find -lGL错误
+title: Linux qt 安装及解决cannot find -lGL错误
+
+
+linux qt install
+``` shell
+
+sudo apt install cmake gcc g++ 
+```
+继续运行qt安装文件
 
 
 1.查找opengl库
