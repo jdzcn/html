@@ -8,10 +8,17 @@ title: 远程桌面Linux remote desktop
 
 ```shell
 x11vnc -passwd PASSWORD -display :0 -forever
+
+apt install tigervnc-standalone-server openbox
+vncpasswd
+tigervncserver -xstartup /usr/bin/openbox-session -geometry 800x600 -localhost no :1
 ```
+
 ### Client:
 
 ```shell
+ssh -NL 5920:localhost:5901 root@jdz.buzz #端口转发，客户端连接localhost:20
+
 vinagre
 ```
 ### Creating x11vnc system service
