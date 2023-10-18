@@ -10,6 +10,10 @@ samba是局域网共享文件的重要方式，本文介绍如何在debian10中�
 ```shell
 apt -y install samba
 ```
+### 配置防火墙
+```shell
+ufw allow from 192.168.1.0/24 to any app Samba
+```
 
 ### 配置
 
@@ -45,6 +49,8 @@ map to guest = Bad User
     path = /home/sb/movie
     # writable
     writable = yes
+    browseable = yes
+    public = yes
     # guest OK
     guest ok = yes
     # guest only
