@@ -1,0 +1,14 @@
+[Unit]
+Description=FRP Client Daemon
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/path/to/your/frpc -c /path/to/your/frpc.ini
+Restart=always
+RestartSec=20s
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
