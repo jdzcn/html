@@ -21,10 +21,13 @@ youtube-dl --playlist-items 1,3-5 url
 #only audio mp3
 youtube-dl -x --audio-format mp3 url
 
+ffmpeg -i video.mp4 -f mp3 -ab 192000 -vn music.mp3
+
 #指定长度
 youtube-dl -x --audio-format mp3 --postprocessor-args "-ss 00:00:53 -to 00:01:20" https://youtu.be/NjTT5_RSkw4
 or
 ffmpeg -i input_video.mp4 -ss 00:01:00 -to 00:03:00 -c copy output_video.mp4
+
 ```
 ### Config
 ~/.config/youtube-dl/config
